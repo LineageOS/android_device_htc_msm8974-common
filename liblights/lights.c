@@ -300,6 +300,9 @@ static int open_lights(const struct hw_module_t* module, char const* name,
   dev = malloc(sizeof(struct light_device_t));
   memset(dev, 0, sizeof(struct light_device_t));
 
+  if (!dev)
+    return -ENOMEM;
+
   dev->common.tag = HARDWARE_DEVICE_TAG;
   dev->common.version = 0;
   dev->common.module = (struct hw_module_t*) module;
