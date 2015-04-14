@@ -148,3 +148,6 @@
     {RIL_REQUEST_SET_DC_RT_INFO_RATE, dispatchInts, responseVoid},
     {RIL_REQUEST_SET_DATA_PROFILE, dispatchDataProfile, responseVoid},
     {RIL_REQUEST_SHUTDOWN, dispatchVoid, responseVoid},
+    {RIL_REQUEST_START_LCE, dispatchInts, responseLceStatus},
+    {RIL_REQUEST_STOP_LCE, dispatchVoid, responseLceStatus},
+    {RIL_REQUEST_PULL_LCEDATA, dispatchVoid, responseLceData},
