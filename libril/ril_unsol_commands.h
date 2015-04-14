@@ -71,3 +71,4 @@
     {RIL_UNSOL_RESPONSE_VOICE_RADIO_TECH_CHANGED, responseVoid, WAKE_PARTIAL},    // s_unsolResponses[50]: 21004
     {RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED_HTC, responseVoid, WAKE_PARTIAL},   // s_unsolResponses[51]: 21005
     {RIL_UNSOL_RESPONSE_DATA_NETWORK_STATE_CHANGED, responseDataCallList, WAKE_PARTIAL},  // s_unsolResponses[52]: 21007
+    {RIL_UNSOL_LCEDATA_RECV, responseLceData, WAKE_PARTIAL},
