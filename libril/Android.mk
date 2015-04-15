@@ -22,7 +22,7 @@ LOCAL_SHARED_LIBRARIES := \
     librilutils \
 
 LOCAL_STATIC_LIBRARIES := \
-    libnanopb-c-2.8.0-enable_malloc \
+    libprotobuf-c-nano-enable_malloc \
 
 #LOCAL_CFLAGS := -DANDROID_MULTI_SIM -DDSDA_RILD1
 
