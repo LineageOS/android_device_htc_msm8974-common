@@ -46,10 +46,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     mm.enable.smoothstreaming=true
 
-# MTP
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.nfc.fw_download=true \
