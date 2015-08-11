@@ -178,16 +178,20 @@ PRODUCT_PACKAGES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
+    libdashplayer \
     libdivxdrmdecrypt \
-    libOmxCore \
-    libOmxVdec \
-    libOmxVenc \
+    libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
+    libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libOmxVidcCommon \
+    libqcmediaplayer \
     libstagefrighthw \
-    libdashplayer \
     qcmediaplayer
 
 PRODUCT_BOOT_JARS += \
