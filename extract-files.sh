@@ -2,9 +2,6 @@
 
 set -e
 
-export DEVICE=m8
-export VENDOR=htc
-
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do
         OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
@@ -54,6 +51,12 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-extract ../../$VENDOR/$DEVICE/proprietary-files.txt $BASE
+extract ../../$VENDOR/$DEVICE/device-proprietary-files.txt $BASE
+extract ../../$VENDOR/m8-common/proprietary-files.txt $BASE
+
+BASE=../../../vendor/$VENDOR/m8-common/proprietary
+rm -rf $BASE/*
+
+extract ../../$VENDOR/m8-common/common-proprietary-files.txt $BASE
 
 ./setup-makefiles.sh

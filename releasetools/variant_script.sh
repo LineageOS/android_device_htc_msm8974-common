@@ -8,6 +8,8 @@ modelid=`getprop ro.boot.mid`
 case $modelid in
     "0P6B20000") variant="vzw" ;;
     "0P6B70000") variant="spr" ;;
+    "0P6B61000") variant="dug" ;;
+    "0P6B64000") variant="dug" ;;
     "0P6B13000") variant="gsm"; tmo="true" ;;
     *)           variant="gsm" ;;
 esac
