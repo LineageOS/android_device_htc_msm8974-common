@@ -59,7 +59,6 @@ BOARD_USES_QCOM_HARDWARE := true
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
-AUDIO_FEATURE_ENABLED_FM := true
 AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 
@@ -93,9 +92,6 @@ TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-# NFC
-BOARD_NFC_HAL_SUFFIX := msm8974
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
@@ -154,9 +150,7 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/htc/msm8974-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    cir_fw_update.te \
     device.te \
-    file_contexts \
     file.te \
     hcheck.te \
     init.te \
@@ -169,7 +163,6 @@ BOARD_SEPOLICY_UNION += \
     recovery.te \
     radio.te \
     rmt_storage.te \
-    system_app.te \
     system_server.te \
     tap2wake_dev.te \
     thermal-engine.te \
