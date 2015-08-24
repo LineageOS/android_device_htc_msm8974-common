@@ -1,5 +1,5 @@
 #
-# Common system properties for HTC One M8
+# Common system properties for msm8974
 #
 
 # Audio
@@ -20,10 +20,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.speaker=true
-
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.maxopen=3
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
