@@ -72,6 +72,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
+# Crypto
+TARGET_HW_DISK_ENCRYPTION := true
+
 # Font
 EXTENDED_FONT_FOOTPRINT := true
 
