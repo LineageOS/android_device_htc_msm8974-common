@@ -52,11 +52,11 @@ BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
 extract ../../$VENDOR/$DEVICE/device-proprietary-files.txt $BASE
-extract ../../$VENDOR/m8-common/proprietary-files.txt $BASE
+extract ../../$VENDOR/msm8974-common/proprietary-files.txt $BASE
 
-BASE=../../../vendor/$VENDOR/m8-common/proprietary
+BASE=../../../vendor/$VENDOR/msm8974-common/proprietary
 rm -rf $BASE/*
 
-extract ../../$VENDOR/m8-common/common-proprietary-files.txt $BASE
+extract ../../$VENDOR/msm8974-common/common-proprietary-files.txt $BASE
 
 ./setup-makefiles.sh
