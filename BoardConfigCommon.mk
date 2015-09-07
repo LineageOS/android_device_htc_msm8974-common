@@ -22,9 +22,7 @@
 # definition file).
 #
 
-LOCAL_PATH := device/htc/m8-common
-
-TARGET_BOARD_INFO_FILE ?= device/htc/m8-common/board-info.txt
+LOCAL_PATH := device/htc/msm8974-common
 
 BOARD_VENDOR := htc
 
@@ -153,7 +151,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/htc/m8-common/sepolicy
+BOARD_SEPOLICY_DIRS += device/htc/msm8974-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     cir_fw_update.te \
@@ -180,11 +178,8 @@ BOARD_SEPOLICY_UNION += \
     vold.te \
     wpa.te
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/htc/m8-common/releasetools
-
 # Hardware
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
 # Inherit from the proprietary version
--include vendor/htc/m8-common/BoardConfigVendor.mk
+-include vendor/htc/msm8974-common/BoardConfigVendor.mk
