@@ -218,10 +218,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Variant linking script
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/releasetools/variant_script.sh:install/bin/variant_script.sh
-
 # Wifi firmware
 PRODUCT_PACKAGES += \
     wcnss_service
