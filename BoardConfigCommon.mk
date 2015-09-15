@@ -43,9 +43,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
-# Flags
-COMMON_GLOBAL_CFLAGS += -DHTCLOG
-
 # Kernel
 BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE := 0x00000000
@@ -90,6 +87,9 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # Includes
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
+# Libc extensions
+BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_htc_symbols
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
