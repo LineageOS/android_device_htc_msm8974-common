@@ -108,11 +108,11 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
+#PRODUCT_PACKAGES += \
+#    qcom.fmradio \
+#    libqcomfm_jni \
+#    FM2 \
+#    FMRecord
 
 # GPS
 PRODUCT_COPY_FILES += \
