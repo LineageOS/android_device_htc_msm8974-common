@@ -107,13 +107,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
