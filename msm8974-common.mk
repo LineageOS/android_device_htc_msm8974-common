@@ -107,6 +107,10 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
+# HTC symbols
+PRODUCT_PACKAGES += \
+    libhtc_symbols
+
 # FM radio
 PRODUCT_PACKAGES += \
     qcom.fmradio \
