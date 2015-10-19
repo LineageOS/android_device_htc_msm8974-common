@@ -324,4 +324,7 @@
     <integer name="config_dayColorTemperature">7000</integer>
     <integer name="config_nightColorTemperature">4000</integer>
 
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+
 </resources>
