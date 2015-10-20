@@ -105,6 +105,9 @@ on fs
 
     setprop ro.crypto.fuse_sdcard true
 
+on post-fs
+   export LD_PRELOAD /system/lib/libhtc_symbols.so
+
 on post-fs-data
     symlink /sys/kernel/debug /data/d
 
