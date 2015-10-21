@@ -98,10 +98,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# Camera
-PRODUCT_PACKAGES += \
-    camera.msm8974
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
