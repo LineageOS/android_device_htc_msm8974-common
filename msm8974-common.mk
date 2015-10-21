@@ -125,7 +125,8 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8974 \
     libgenlock \
     liboverlay \
-    memtrack.msm8974
+    memtrack.msm8974 \
+    libboringssl-compat
 
 # IPC router config
 PRODUCT_COPY_FILES += \
