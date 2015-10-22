@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f2577a7_d9f2069b",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-10-22T14:03:52Z",
+      "side": 1,
+      "message": "What is the correct separator after all? Can it be \u0027.\u0027 or \u0027 \u0027? I see that some devs use spaces.",
+      "range": {
+        "startLine": 38,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "f7b6f17942124356f08ad7da889f74ddf72d91f8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
