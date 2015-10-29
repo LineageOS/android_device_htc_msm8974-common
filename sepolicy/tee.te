@@ -1,0 +1,2 @@
+# FIXME?? allow tee system_data_file:dir { add_name create remove_name rmdir write };
+# FIXME?? allow tee system_data_file:file { create open unlink write };
