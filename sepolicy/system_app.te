@@ -1,0 +1,1 @@
+allow system_app gesture_dev:file write;
