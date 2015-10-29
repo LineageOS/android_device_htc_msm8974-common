@@ -449,6 +449,7 @@ service thermal-engine /system/bin/thermal-engine -c /system/etc/thermal-engine.
    socket thermal-send-client stream 0666 system system
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
+   seclabel u:r:thermal-engine:s0
 
 service time_daemon /system/bin/time_daemon
    class late_start
