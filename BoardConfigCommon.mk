@@ -126,10 +126,6 @@ TARGET_RECOVERY_DEVICE_DIRS += device/htc/msm8974-common
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
-# SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/htc/msm8974-common/sepolicy
-
 # Hardware
 BOARD_HARDWARE_CLASS := \
     hardware/cyanogen/cmhw \
