@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f2577a7_cb132d0d",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-10-30T01:16:37Z",
+      "side": 1,
+      "message": "This is a duplicate and can be safely removed: https://github.com/CyanogenMod/android_device_qcom_sepolicy/blob/cm-13.0/common/file_contexts#L72 \u0026 https://github.com/CyanogenMod/android_device_htc_msm8974-common/blob/cm-13.0/BoardConfigCommon.mk#L45",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 77
+      },
+      "revId": "473a430182c27c92a0a632c8e9054677b90fbd86",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
