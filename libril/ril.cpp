@@ -2028,7 +2028,7 @@ static void dispatchRadioCapability(Parcel &p, RequestInfo *pRI){
 
     startRequest;
     appendPrintBuf("%s [version:%d, session:%d, phase:%d, rat:%d, \
-            logicalModemUuid:%s, status:%d", printBuf, rc.version, rc.session
+            logicalModemUuid:%s, status:%d", printBuf, rc.version, rc.session,
             rc.phase, rc.rat, rc.logicalModemUuid, rc.session);
 
     closeRequest;
@@ -3733,7 +3733,7 @@ static int responseLceData(Parcel &p, void *response, size_t responselen) {
   p.write((void *)&(p_cur->lce_suspended), 1);
 
   startResponse;
-  appendPrintBuf("LCE info received: capacity %d confidence level %d
+  appendPrintBuf("LCE info received: capacity %d confidence level %d \
                   and suspended %d",
                   p_cur->last_hop_capacity_kbps, p_cur->confidence_level,
                   p_cur->lce_suspended);
