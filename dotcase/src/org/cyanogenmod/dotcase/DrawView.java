@@ -317,11 +317,11 @@ public class DrawView extends View {
     }
 
     private void dotcaseDrawPixel(int x, int y, Paint paint, Canvas canvas) {
-        canvas.drawRect((x * DotcaseConstants.DOT_RATIO + 5),
-                        (y * DotcaseConstants.DOT_RATIO + 5),
-                        ((x + 1) * DotcaseConstants.DOT_RATIO - 5),
-                        ((y + 1) * DotcaseConstants.DOT_RATIO - 5),
-                        paint);
+        canvas.drawRoundRect((x * DotcaseConstants.DOT_RATIO + 3),
+                            (y * DotcaseConstants.DOT_RATIO + 3),
+                            ((x + 1) * DotcaseConstants.DOT_RATIO - 3),
+                            ((y + 1) * DotcaseConstants.DOT_RATIO - 3),
+                            20, 20, paint);
     }
 
     private void dotcaseDrawRect(int left, int top, int right,
