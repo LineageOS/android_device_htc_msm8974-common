@@ -255,6 +255,10 @@ on boot
 # load ADSP
     write /sys/kernel/boot_adsp/boot 1
 
+    # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
+
 ## Service start here
 service adsprpcd /system/bin/adsprpcd
     class main
