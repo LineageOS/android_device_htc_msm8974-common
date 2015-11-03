@@ -108,13 +108,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libhtc_symbols
 
-# FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
