@@ -68,7 +68,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
     persist.thermal.monitor=true \
     ro.qc.sdk.sensors.gestures=true \
-    ro.vendor.extension_library=/vendor/lib/libqc-opt.so \
     ro.qualcomm.perf.cores_online=2
 
 # RIL
