@@ -36,7 +36,7 @@ on early-init
     write /sys/block/mmcblk1/bdi/read_ahead_kb 512
 
 on init
-    export LD_PRELOAD "/system/lib/libhtc_symbols.so:/system/lib/libboringssl-compat.so"
+    export LD_PRELOAD /system/lib/libhtc_symbols.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
