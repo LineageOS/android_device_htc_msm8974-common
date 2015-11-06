@@ -66,7 +66,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
-    persist.thermal.monitor=true \
     ro.qc.sdk.sensors.gestures=true \
     ro.qualcomm.perf.cores_online=2
 
