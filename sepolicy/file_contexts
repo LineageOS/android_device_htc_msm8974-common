@@ -15,6 +15,8 @@
 /data/cam_socket3		u:object_r:camera_socket:s0
 /data/OTPData.dat		u:object_r:camera_data_file:s0
 
+/system/bin/thermanager		u:object_r:thermanager_exec:s0
+
 /data/system/default_values	u:object_r:mpctl_data_file:s0
 
 /sys/devices/virtual/htc_sensorhub/sensor_hub/tap2wake	 u:object_r:tap2wake_dev:s0
