@@ -147,6 +147,10 @@ class CoverObserver extends UEventObserver {
                     name = normalize(name);
                     name = name + "  "; // Add spaces so the scroll effect looks good
 
+                    // Turn on the screen
+                    if (!mPowerManager.isScreenOn())
+                        mPowerManager.wakeUp(SystemClock.uptimeMillis());
+
                     Dotcase.sStatus.startRinging(number, name);
                     Dotcase.sStatus.setOnTop(true);
                     new Thread(new ensureTopActivity()).start();
