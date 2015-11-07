@@ -27,6 +27,7 @@
 
 import init.qcom.power.rc
 import init.qcom.usb.rc
+import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -36,8 +37,6 @@ on early-init
     write /sys/block/mmcblk1/bdi/read_ahead_kb 512
 
 on init
-    export LD_PRELOAD /system/lib/libhtc_symbols.so
-
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
