@@ -91,6 +91,8 @@ public class Dotcase extends Activity implements SensorEventListener
         final DrawView drawView = new DrawView(mContext);
         setContentView(drawView);
 
+        DotcaseConstants.setRatio();
+
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mDetector = new GestureDetector(mContext, new DotcaseGestureListener());
