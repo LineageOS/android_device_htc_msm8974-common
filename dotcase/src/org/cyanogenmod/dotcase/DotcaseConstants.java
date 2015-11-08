@@ -22,6 +22,7 @@ package org.cyanogenmod.dotcase;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.SystemProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +30,27 @@ import java.util.Map;
 public class DotcaseConstants {
     static final String ACTION_KILL_ACTIVITY = "org.cyanogenmod.dotcase.KILL_ACTIVITY";
     static final String ACTION_REDRAW = "org.cyanogenmod.dotcase.REDRAW";
-    static final int DOT_RATIO = 40;
+    static int DOT_RATIO;
+    static int OFFSET_X;
+    static int OFFSET_Y;
+
+    static void setRatio (int screenWidth) {
+        String offset_x = SystemProperties.get("htc.dotcase.offset_x");
+        String offset_y = SystemProperties.get("htc.dotcase.offset_y");
+
+        switch (screenWidth) {
+            case 720:
+                DOT_RATIO = 2640/99; //26.66 periodic
+                break;
+            // Add more resolutions here
+            default: //1080p
+                DOT_RATIO = 40;
+                break;
+        }
+
+        OFFSET_X = offset_x.equals("") ? 0 : Integer.parseInt(offset_x);
+        OFFSET_Y = offset_y.equals("") ? 0 : Integer.parseInt(offset_y);
+    }
 
     /**
      * Notification types
