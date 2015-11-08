@@ -194,8 +194,8 @@ PRODUCT_PACKAGES += \
     power.msm8974
 
 # Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8974
+# PRODUCT_PACKAGES += \
+#     keystore.msm8974
 
 # Thermal
 PRODUCT_COPY_FILES += \
