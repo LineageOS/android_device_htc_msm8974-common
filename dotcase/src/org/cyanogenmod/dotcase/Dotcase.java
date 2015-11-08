@@ -36,6 +36,7 @@ import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -90,6 +91,12 @@ public class Dotcase extends Activity implements SensorEventListener
 
         final DrawView drawView = new DrawView(mContext);
         setContentView(drawView);
+
+        String resolution = SystemProperties.get("htc.dotcase.res");
+        String offset_x = SystemProperties.get("htc.dotcase.offset_x");
+        String offset_y = SystemProperties.get("htc.dotcase.offset_y");
+
+        DotcaseConstants.setRatio(resolution, offset_x, offset_y);
 
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
