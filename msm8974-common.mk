@@ -141,6 +141,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
     $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/usr/keylayout/AK8789_HALL_SENSOR.kl
 
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.msm8974
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8974
@@ -194,9 +198,9 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     power.msm8974
 
-# Keystore
+# Radio
 PRODUCT_PACKAGES += \
-    keystore.msm8974
+    libxml2
 
 # Thermal
 PRODUCT_PACKAGES += \
