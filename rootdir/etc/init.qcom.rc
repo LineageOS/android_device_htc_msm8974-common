@@ -96,6 +96,11 @@ on post-fs-data
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
 
+    # Radio shits
+    mkdir /dev/radio 0770 radio radio
+    chmod 0660 /dev/htc_diag
+    chown radio qcom_diag /dev/htc_diag
+
     restorecon /data/OTPData.dat
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
