@@ -202,6 +202,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libxml2
 
+# Sony timekeep
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep
+
 # Thermal
 PRODUCT_PACKAGES += \
     thermanager

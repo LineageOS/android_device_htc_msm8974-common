@@ -448,10 +448,11 @@ service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     user root
     group root
 
-service time_daemon /system/bin/time_daemon
+service timekeep /system/bin/timekeep restore
    class late_start
    user root
    group root
+   oneshot
 
 service wcnss-service /system/bin/wcnss_service
     class main
