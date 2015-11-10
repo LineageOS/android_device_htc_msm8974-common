@@ -101,6 +101,9 @@ on post-fs-data
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
 
+    # Radio permissions
+    mkdir /dev/radio 0770 radio radio
+
     restorecon /data/OTPData.dat
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
