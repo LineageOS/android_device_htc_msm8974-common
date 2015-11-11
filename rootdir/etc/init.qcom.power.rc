@@ -79,7 +79,7 @@ on enable-low-power
 
     start mpdecision
 
-on class_start:late_start
+on property:init.svc.bootanim=stopped
     trigger enable-low-power
 
 on property:init.svc.recovery=running
