@@ -44,7 +44,7 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
-# HTC SSD Battery - BEGIN
+    # HTC SSD Battery - BEGIN
     chown system system /sys/class/power_supply/battery/full_level_dis_batt_chg
     chmod 0220 /sys/class/power_supply/battery/full_level_dis_batt_chg
     chown radio radio /sys/class/power_supply/battery/phone_call
@@ -55,18 +55,22 @@ on init
     chmod 0220 /sys/class/power_supply/battery/navigation
     chown system system /sys/class/power_supply/battery/disable_limit_chg
     chmod 0220 /sys/class/power_supply/battery/disable_limit_chg
-# HTC SSD Battery - END
+    # HTC SSD Battery - END
 
     # permissions for NFC
     chown nfc nfc /sys/class/NFC_sensor/comn/nxp_uicc_swp
     chmod 0664 /sys/class/NFC_sensor/comn/nxp_uicc_swp
 
-# Vibrator permission
+    # Vibrator permission
     chown system /sys/devices/virtual/timed_output/vibrator/voltage_level
     restorecon /sys/devices/virtual/timed_output/vibrator/voltage_level
 
-# Quick Charge 2.0 daemon
+    # Quick Charge 2.0 daemon
     setprop persist.usb.hvdcp.detect "true"
+
+    # Gestures
+    chown system system /sys/class/htc_sensorhub/sensor_hub/gesture_motion
+    chmod 0664 /sys/class/htc_sensorhub/sensor_hub/gesture_motion
 
 on fs
     mkdir /devlog 0700 root root
