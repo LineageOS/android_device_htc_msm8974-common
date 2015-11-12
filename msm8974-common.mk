@@ -104,8 +104,7 @@ PRODUCT_COPY_FILES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
+    make_ext4fs
 
 # HTC symbols
 PRODUCT_PACKAGES += \
