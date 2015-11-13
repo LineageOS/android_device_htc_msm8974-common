@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f2f7f8d_ca21ddb6",
+        "filename": "sepolicy/device.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-11-13T18:00:21Z",
+      "side": 1,
+      "message": "Seeing this as a leftover from m8-common -\u003e msm8974-common, it comes to my mind the thought that we should be moving sepolicy to device trees (specific m8-common polices and eyeul policies) instead of having sepolicies here. That\u0027s what\u0027s done for example on htc_msm8960 devices.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 26
+      },
+      "revId": "8f5e9e5540cf786bcb580b9e450c39e61e1869c4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
