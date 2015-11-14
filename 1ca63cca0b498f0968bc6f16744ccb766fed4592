@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f2f7f8d_961bfc19",
+        "filename": "rootdir/etc/init.qcom-common.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-11-14T20:07:19Z",
+      "side": 1,
+      "message": "Why is this here? Don\u0027t think we need this.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 34
+      },
+      "revId": "1ca63cca0b498f0968bc6f16744ccb766fed4592",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
