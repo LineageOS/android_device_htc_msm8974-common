@@ -27,7 +27,6 @@
 
 import init.qcom.power.rc
 import init.qcom.usb.rc
-import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -276,12 +275,6 @@ service audiod /system/bin/audiod
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class late_start
     user root
-    oneshot
-
-service cir_fw_update /system/bin/cir_fw_update -u cir.img
-    class main
-    user root
-    group root
     oneshot
 
 service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
