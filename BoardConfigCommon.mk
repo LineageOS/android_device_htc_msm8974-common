@@ -131,6 +131,3 @@ BOARD_HARDWARE_CLASS := \
     hardware/cyanogen/cmhw \
     $(LOCAL_PATH)/cmhw
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/htc_sensorhub/sensor_hub/tap2wake"
-
-# Inherit from the proprietary version
--include vendor/htc/msm8974-common/BoardConfigVendor.mk
