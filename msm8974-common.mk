@@ -101,9 +101,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# HTC symbols
+# HTC logging symbols
 PRODUCT_PACKAGES += \
-    libhtc_symbols
+    libshim_log
 
 # GPS
 PRODUCT_COPY_FILES += \
