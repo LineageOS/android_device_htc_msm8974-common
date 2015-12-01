@@ -105,9 +105,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     make_ext4fs
 
-# HTC symbols
+# HTC logging symbols
 PRODUCT_PACKAGES += \
-    libhtc_symbols
+    libshim_log
 
 # GPS
 PRODUCT_COPY_FILES += \
