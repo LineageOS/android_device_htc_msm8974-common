@@ -31,13 +31,16 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -247,6 +250,48 @@ public class Dotcase extends Activity implements SensorEventListener
             sStatus.resetTimer();
             return true;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        AudioManager mAudioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+        int mCurrVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_RING);
+
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            sStatus.setVolumeChanged(true);
+            sStatus.setVolumeKeyPressed(true);
+
+            if (mCurrVolume < 7)
+                mCurrVolume++;
+            mAudioManager.setStreamVolume(AudioManager.STREAM_RING, mCurrVolume, 0);
+            sStatus.setVolume(mCurrVolume);
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            sStatus.setVolumeChanged(true);
+            sStatus.setVolumeKeyPressed(true);
+
+            if (mCurrVolume == 1) {
+                Vibrator mVib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                mVib.vibrate(250);
+            }
+
+            if (mCurrVolume > 0)
+                mCurrVolume--;
+
+            mAudioManager.setStreamVolume(AudioManager.STREAM_RING, mCurrVolume, 0);
+            sStatus.setVolume(mCurrVolume);
+            return true;
+        } else
+            return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP ||
+            keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            return true;
+        } else
+            return super.onKeyUp(keyCode, event);
     }
 
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
