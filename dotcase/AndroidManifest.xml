@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <supports-screens android:anyDensity="true" />
     <application android:label="Dotcase" android:process="com.android.systemui">
         <receiver android:name="org.cyanogenmod.dotcase.BootCompletedReceiver">
