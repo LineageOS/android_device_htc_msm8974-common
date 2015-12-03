@@ -47,6 +47,13 @@ public class DotcaseStatus {
     private int mCallerTicker = 0;
     private boolean mAlarmClock = false;
 
+    private int mVolume = 0;
+    private int mMaxVolume = 0;
+    private boolean mVolumeChanged = false;
+    private boolean mStreamVibrateable = false;
+    private boolean mVolumeKeyPressed = false;
+    private boolean mHeadsetState = false;
+
     private boolean mStayOnTop = false;
 
     private List<Notification> mNotifications = new Vector<Notification>();
@@ -163,6 +170,54 @@ public class DotcaseStatus {
 
     synchronized String getCallerNumber() {
         return mCallerNumber;
+    }
+
+    synchronized void setVolumeChanged(boolean val) {
+        mVolumeChanged = val;
+    }
+
+    synchronized boolean isVolumeChanged() {
+        return mVolumeChanged;
+    }
+
+    synchronized void setVolume(int level) {
+        mVolume = level;
+    }
+
+    synchronized int getVolume() {
+        return mVolume;
+    }
+
+    synchronized void setMaxVolume(int level) {
+        mMaxVolume = level;
+    }
+
+    synchronized int getMaxVolume() {
+        return mMaxVolume;
+    }
+
+    synchronized void setStreamVibrateable(boolean val) {
+        mStreamVibrateable = val;
+    }
+
+    synchronized boolean isStreamVibrateable() {
+        return mStreamVibrateable;
+    }
+
+    synchronized void setVolumeKeyPressed(boolean val) {
+        mVolumeKeyPressed = val;
+    }
+
+    synchronized boolean isVolumeKeyPressed() {
+        return mVolumeKeyPressed;
+    }
+
+    synchronized void setHeadhonesState(boolean val) {
+        mHeadsetState = val;
+    }
+
+    synchronized boolean getHeadphonesState() {
+        return mHeadsetState;
     }
 
     synchronized List<Notification> getNotifications() {

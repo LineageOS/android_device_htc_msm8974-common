@@ -32,14 +32,18 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.AudioSystem;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -256,6 +260,62 @@ public class Dotcase extends Activity implements SensorEventListener
             sStatus.resetTimer();
             return true;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            if (!sStatus.isAlarm() && !sStatus.isRinging()) {
+                AudioManager mAudioManager = (AudioManager) getApplicationContext()
+                        .getSystemService(Context.AUDIO_SERVICE);
+                int currentAudioStream;
+                int flags = 0;
+
+                if (AudioSystem.isStreamActive(AudioManager.STREAM_MUSIC, 0))
+                    currentAudioStream = AudioManager.STREAM_MUSIC;
+                else if (AudioSystem.isStreamActive(AudioManager.STREAM_INCALL_MUSIC, 0))
+                    currentAudioStream = AudioManager.STREAM_INCALL_MUSIC;
+                else if (AudioSystem.isStreamActive(AudioManager.STREAM_NOTIFICATION, 0))
+                    currentAudioStream = AudioManager.STREAM_NOTIFICATION;
+                else if (AudioSystem.isStreamActive(AudioManager.STREAM_VOICE_CALL, 0))
+                    currentAudioStream = AudioManager.STREAM_VOICE_CALL;
+                else
+                    currentAudioStream = AudioManager.STREAM_RING;
+
+                if (currentAudioStream == AudioManager.STREAM_RING
+                        || currentAudioStream == AudioManager.STREAM_NOTIFICATION)
+                    flags = AudioManager.FLAG_PLAY_SOUND;
+
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+                    mAudioManager.adjustVolume(AudioManager.ADJUST_RAISE, flags);
+                } else {
+                    if ((currentAudioStream == AudioManager.STREAM_RING
+                            || currentAudioStream == AudioManager.STREAM_NOTIFICATION)
+                            && (mAudioManager.getStreamVolume(currentAudioStream) == 1)) {
+                        Vibrator mVib = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                        mVib.vibrate(250);
+                    }
+                    mAudioManager.adjustVolume(AudioManager.ADJUST_LOWER, flags);
+                }
+
+                sStatus.setVolume(mAudioManager.getStreamVolume(currentAudioStream));
+                sStatus.setMaxVolume(mAudioManager.getStreamMaxVolume(currentAudioStream));
+                sStatus.setStreamVibrateable(currentAudioStream == AudioManager.STREAM_RING
+                        || currentAudioStream == AudioManager.STREAM_NOTIFICATION);
+                sStatus.setVolumeChanged(true);
+                sStatus.setVolumeKeyPressed(true);
+                sStatus.setHeadhonesState(mAudioManager.isWiredHeadsetOn() || mAudioManager.isBluetoothA2dpOn());
+            }
+            return true;
+        } else
+            return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        return keyCode == KeyEvent.KEYCODE_VOLUME_UP ||
+                keyCode == KeyEvent.KEYCODE_VOLUME_DOWN ||
+                super.onKeyUp(keyCode, event);
     }
 
     private final BroadcastReceiver receiver = new BroadcastReceiver() {

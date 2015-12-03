@@ -41,6 +41,7 @@ public class DrawView extends View {
     private final Context mContext;
     private final IntentFilter mFilter = new IntentFilter();
     private int mHeartbeat = 0;
+    private int mVolumeTimeout = 0;
     private Paint mPaint;
 
     public DrawView(Context context) {
@@ -58,6 +59,23 @@ public class DrawView extends View {
             drawName(canvas);
             drawNumber(canvas);
             drawRinger(canvas);
+        } else if (Dotcase.sStatus.isVolumeChanged()) {
+            if (mVolumeTimeout < 5) {
+                drawVolumeIndicator(canvas);
+
+                if (Dotcase.sStatus.isVolumeKeyPressed()) {
+                    mVolumeTimeout = 0;
+                    Dotcase.sStatus.setVolumeKeyPressed(false);
+                }
+
+                if (mVolumeTimeout == 3)
+                    Dotcase.sStatus.setVolumeChanged(false);
+
+                mVolumeTimeout++;
+            } else {
+                mVolumeTimeout = 0;
+            }
+            Dotcase.sStatus.resetTimer();
         } else {
             drawTime(canvas);
 
@@ -314,6 +332,40 @@ public class DrawView extends View {
                 starter + 12, 5, canvas);
         dotcaseDrawSprite(DotcaseConstants.getNumSprite(time.timeString.charAt(3)),
                 starter + 17, 5, canvas);
+    }
+
+    private void drawVolumeIndicator(Canvas canvas) {
+        int volume = Dotcase.sStatus.getVolume();
+        int maxVolume = Dotcase.sStatus.getMaxVolume();
+
+        if (volume > 0) {
+            dotcaseDrawSprite(DotcaseConstants.volumeNormalSprite, 6, 5, canvas);
+            dotcaseDrawRect(3, 20, 24, 22, 8, canvas);
+            switch (maxVolume) {
+                case 5:
+                    // voice call stream
+                    dotcaseDrawRect(3, 20, (volume == 5  ? (volume * 4) + 1 : (volume * 4)) + 3, 22,
+                            9, canvas);
+                    break;
+                case 15:
+                    // music stream
+                    // volume bar color is changed to orange if headphones (or bluetooth
+                    // headset) are inserted and the volume exceeds recommended level
+                    dotcaseDrawRect(3, 20, (volume > 9 ? (volume + (volume - 9)) : volume) + 3, 22,
+                            Dotcase.sStatus.getHeadphonesState() ? (volume <= 8 ? 9 : 5) : 9, canvas);
+                    break;
+                default:
+                    // ring and notification streams
+                    dotcaseDrawRect(3, 20, (volume * 3) + 3, 22,
+                            9, canvas);
+                    break;
+            }
+        } else {
+            if (Dotcase.sStatus.isStreamVibrateable())
+                dotcaseDrawSprite(DotcaseConstants.volumeVibrateSprite, 6, 5, canvas);
+            else
+                dotcaseDrawSprite(DotcaseConstants.volumeSilentSprite, 6, 5, canvas);
+        }
     }
 
     private void dotcaseDrawPixel(int x, int y, Paint paint, Canvas canvas) {

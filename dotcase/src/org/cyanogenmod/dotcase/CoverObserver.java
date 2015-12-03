@@ -162,6 +162,9 @@ class CoverObserver extends UEventObserver {
                 new Thread(new ensureTopActivity()).start();
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
                 Dotcase.sStatus.resetTimer();
+                // make sure volume screen won't appear
+                Dotcase.sStatus.setVolumeChanged(false);
+                Dotcase.sStatus.setVolumeKeyPressed(false);
                 intent.setAction(DotcaseConstants.ACTION_REDRAW);
                 mContext.sendBroadcast(intent);
                 i.setClassName("org.cyanogenmod.dotcase", "org.cyanogenmod.dotcase.Dotcase");
