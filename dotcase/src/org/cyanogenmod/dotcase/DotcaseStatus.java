@@ -46,6 +46,9 @@ public class DotcaseStatus {
     private String mCallerName = "";
     private int mCallerTicker = 0;
     private boolean mAlarmClock = false;
+    private int mVolume = 0;
+    private boolean mVolumeChanged = false;
+    private boolean mVolumeKeyPressed = false;
 
     private boolean mStayOnTop = false;
 
@@ -163,6 +166,30 @@ public class DotcaseStatus {
 
     synchronized String getCallerNumber() {
         return mCallerNumber;
+    }
+
+    synchronized void setVolumeChanged(boolean state) {
+        mVolumeChanged = state;
+    }
+
+    synchronized boolean isVolumeChanged() {
+        return mVolumeChanged;
+    }
+
+    synchronized void setVolume(int level) {
+        mVolume = level;
+    }
+
+    synchronized int getVolume() {
+        return mVolume;
+    }
+
+    synchronized void setVolumeKeyPressed(boolean state) {
+        mVolumeKeyPressed = state;
+    }
+
+    synchronized boolean isVolumeKeyPressed() {
+        return mVolumeKeyPressed;
     }
 
     synchronized List<Notification> getNotifications() {

@@ -41,6 +41,7 @@ public class DrawView extends View {
     private final Context mContext;
     private final IntentFilter mFilter = new IntentFilter();
     private int mHeartbeat = 0;
+    private int mVolumeTimeout = 0;
     private Paint mPaint;
 
     public DrawView(Context context) {
@@ -58,6 +59,23 @@ public class DrawView extends View {
             drawName(canvas);
             drawNumber(canvas);
             drawRinger(canvas);
+        } else if (Dotcase.sStatus.isVolumeChanged()) {
+            if (mVolumeTimeout < 5) {
+                drawVolumeIndicator(canvas);
+
+                if (Dotcase.sStatus.isVolumeKeyPressed()) {
+                    mVolumeTimeout = 0;
+                    Dotcase.sStatus.setVolumeKeyPressed(false);
+                }
+
+                if (mVolumeTimeout == 3)
+                    Dotcase.sStatus.setVolumeChanged(false);
+
+                mVolumeTimeout++;
+            } else {
+                mVolumeTimeout = 0;
+            }
+            Dotcase.sStatus.resetTimer();
         } else {
             drawTime(canvas);
 
@@ -314,6 +332,18 @@ public class DrawView extends View {
                 starter + 12, 5, canvas);
         dotcaseDrawSprite(DotcaseConstants.getNumSprite(time.timeString.charAt(3)),
                 starter + 17, 5, canvas);
+    }
+
+    private void drawVolumeIndicator(Canvas canvas) {
+        int volume = Dotcase.sStatus.getVolume();
+
+        if (volume > 0) {
+            dotcaseDrawSprite(DotcaseConstants.volumeNormalSprite, 6, 5, canvas);
+            dotcaseDrawRect(3, 20, 24, 22, 8, canvas);
+            dotcaseDrawRect(3, 20, (volume * 3) + 3, 22, 9, canvas);
+        } else {
+            dotcaseDrawSprite(DotcaseConstants.volumeVibrateSprite, 6, 5, canvas);
+        }
     }
 
     private void dotcaseDrawPixel(int x, int y, Paint paint, Canvas canvas) {
