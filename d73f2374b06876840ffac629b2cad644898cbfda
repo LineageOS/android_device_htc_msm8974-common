@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f91af0f_f40cde43",
+        "filename": "rootdir/etc/init.qcom.usb.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-12-08T02:04:34Z",
+      "side": 0,
+      "message": "This is already here: https://github.com/CyanogenMod/android_system_core/blob/cm-13.0/rootdir/init.usb.rc#L6.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "d73f2374b06876840ffac629b2cad644898cbfda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f91af0f_140aa225",
+        "filename": "rootdir/etc/init.qcom.usb.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-12-08T02:04:34Z",
+      "side": 0,
+      "message": "This is already here: https://github.com/CyanogenMod/android_system_core/blob/cm-13.0/rootdir/init.usb.rc#L15.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "d73f2374b06876840ffac629b2cad644898cbfda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
