@@ -84,7 +84,6 @@ on fs
     mkdir /firmware 0771 system system
     mkdir /firmware/radio 0771 system system
     mkdir /firmware/adsp 0771 system system
-    mkdir /firmware/wcnss 0771 system system
     mkdir /vendor 0771 system system
     mkdir /vendor/firmware 0771 system system
 
