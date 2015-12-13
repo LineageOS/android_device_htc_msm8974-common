@@ -72,6 +72,9 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 # Font
 EXTENDED_FONT_FOOTPRINT := true
 
+# FM Radio
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
 # Graphics
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
