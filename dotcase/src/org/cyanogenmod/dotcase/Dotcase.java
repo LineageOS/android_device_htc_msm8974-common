@@ -51,6 +51,7 @@ import android.telecom.TelecomManager;
 
 import java.lang.Math;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -167,18 +168,21 @@ public class Dotcase extends Activity implements SensorEventListener
                             return;
                         }
 
-                        try {
-                            BufferedReader br = new BufferedReader(new FileReader(COVER_NODE));
-                            String value = br.readLine();
-                            br.close();
+                        File node = new File(COVER_NODE);
+                        if(node.exists()) {
+                            try {
+                                BufferedReader br = new BufferedReader(new FileReader(COVER_NODE));
+                                String value = br.readLine();
+                                br.close();
 
-                            if (value.equals("0")) {
-                                sStatus.stopRunning();
-                                finish();
-                                overridePendingTransition(0, 0);
+                                if (value.equals("0")) {
+                                    sStatus.stopRunning();
+                                    finish();
+                                    overridePendingTransition(0, 0);
+                                }
+                            } catch (IOException e) {
+                                Log.e(TAG, "Error reading cover device", e);
                             }
-                        } catch (IOException e) {
-                            Log.e(TAG, "Error reading cover device", e);
                         }
 
                         try {
