@@ -39,6 +39,7 @@ public class DotcaseStatus {
     private boolean mRunning = true;
     private boolean mPocketed = false;
     private boolean mResetTimer = false;
+    private int mSwitchState = 0;
 
     private boolean mRinging = false;
     private int mRingCounter = 0;
@@ -64,6 +65,14 @@ public class DotcaseStatus {
 
     synchronized void stopRunning() {
         mRunning = false;
+    }
+
+    synchronized void setSwitchState(int state) {
+        mSwitchState = state;
+    }
+
+    synchronized int getSwitchedState() {
+        return mSwitchState;
     }
 
     synchronized boolean isPocketed() {
