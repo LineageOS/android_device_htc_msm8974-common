@@ -76,6 +76,7 @@ class CoverObserver extends UEventObserver {
             mSwitchState = Integer.parseInt(event.get("SWITCH_STATE"));
             boolean screenOn = mPowerManager.isScreenOn();
             Dotcase.sStatus.setOnTop(false);
+            Dotcase.sStatus.setSwitchState(mSwitchState);
 
             if (mSwitchState == 1) {
                 if (screenOn) {
