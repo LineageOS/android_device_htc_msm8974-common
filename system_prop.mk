@@ -66,8 +66,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
-    ro.qc.sdk.sensors.gestures=true \
-    ro.qualcomm.perf.cores_online=2
+    ro.qc.sdk.sensors.gestures=true
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
