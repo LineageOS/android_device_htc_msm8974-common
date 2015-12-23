@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f7f9b97_80899727",
+        "filename": "rootdir/etc/init.qcom.power.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2015-12-23T18:19:10Z",
+      "side": 1,
+      "message": "Isn\u0027t it 40?\n\nhttps://www.codeaurora.org/cgit/quic/la/device/qcom/common/tree/rootdir/etc/init.qcom.post_boot.sh?h\u003dLA.HB.1.1.1_rb4.7#n298",
+      "range": {
+        "startLine": 74,
+        "startChar": 58,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "438127c0d9a4cae488ad669e9981038816b7587e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f7f9b97_40f29f08",
         "filename": "rootdir/etc/init.qcom.power.rc",
         "patchSetId": 1
