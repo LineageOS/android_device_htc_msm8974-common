@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f7f9b97_40f29f08",
+        "filename": "rootdir/etc/init.qcom.power.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 6471
+      },
+      "writtenOn": "2015-12-23T14:00:20Z",
+      "side": 1,
+      "message": "Why 1? Are we not one of the specified soc IDs?",
+      "revId": "438127c0d9a4cae488ad669e9981038816b7587e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
