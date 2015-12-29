@@ -39,6 +39,8 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.Vibrator;
+import android.provider.Settings;
+import android.provider.Settings.Global;
 import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
@@ -131,6 +133,8 @@ public class Dotcase extends Activity implements SensorEventListener
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY),
                 SensorManager.SENSOR_DELAY_NORMAL);
+        Settings.Global.putInt(mContext.getContentResolver(),
+                Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED, 0);
     }
 
     @Override
@@ -141,6 +145,9 @@ public class Dotcase extends Activity implements SensorEventListener
         } catch (IllegalArgumentException e) {
             Log.e(TAG, "Failed to unregister listener", e);
         }
+
+        Settings.Global.putInt(mContext.getContentResolver(),
+                Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED, 1);
     }
 
     class Service implements Runnable {
