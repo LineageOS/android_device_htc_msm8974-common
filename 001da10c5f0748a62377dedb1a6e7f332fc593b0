@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fce034c_35bc9268",
+        "filename": "dotcase/src/org/cyanogenmod/dotcase/DotcaseConstants.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2015-12-29T21:30:22Z",
+      "side": 1,
+      "message": "isn\u0027t there a way we can calculate this on the fly rather than setting props?",
+      "revId": "001da10c5f0748a62377dedb1a6e7f332fc593b0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
