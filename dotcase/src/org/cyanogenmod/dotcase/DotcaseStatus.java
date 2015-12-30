@@ -24,6 +24,7 @@ import org.cyanogenmod.dotcase.DotcaseConstants.Notification;
 
 import android.app.INotificationManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.service.notification.StatusBarNotification;
@@ -41,6 +42,7 @@ public class DotcaseStatus {
     private boolean mResetTimer = false;
 
     private boolean mRinging = false;
+    private boolean mInCall = false;
     private int mRingCounter = 0;
     private String mCallerNumber = "";
     private String mCallerName = "";
@@ -103,21 +105,35 @@ public class DotcaseStatus {
 
     synchronized void startRinging(String number, String name) {
         mCallerName = name;
-        startRinging(number);
-    }
-
-    synchronized void startRinging(String number) {
+        mCallerNumber = number;
         mRinging = true;
         mResetTimer = true;
         mRingCounter = 0;
-        mCallerNumber = number;
         mCallerTicker = -6;
     }
 
     synchronized void stopRinging() {
         mRinging = false;
-        mCallerNumber = "";
+    }
+
+    synchronized void startInCall() {
+        mInCall = true;
+        mResetTimer = true;
+        mCallerTicker = -6;
+    }
+
+    synchronized void stopInCall() {
+        mInCall = false;
+    }
+
+    synchronized void setCallerInfo(String name, String number) {
+        mCallerName = name;
+        mCallerNumber = number;
+    }
+
+    synchronized void clearCallerInfo() {
         mCallerName = "";
+        mCallerNumber = "";
     }
 
     synchronized int callerTicker() {
@@ -149,6 +165,10 @@ public class DotcaseStatus {
         return mRinging;
     }
 
+    synchronized boolean isInCall() {
+        return mInCall;
+    }
+
     synchronized boolean isAlarm() {
         return mAlarmClock;
     }
@@ -167,6 +187,26 @@ public class DotcaseStatus {
 
     synchronized List<Notification> getNotifications() {
         return mNotifications;
+    }
+
+    synchronized void saveStatusPrefs(Context context) {
+        SharedPreferences mPrefs = context.getSharedPreferences("statusPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor mPrefsEditor = mPrefs.edit();
+
+        mPrefsEditor.putBoolean("mRinging", Dotcase.sStatus.mRinging);
+        mPrefsEditor.putBoolean("mInCall", Dotcase.sStatus.mInCall);
+        mPrefsEditor.putString("mCallerName", Dotcase.sStatus.mCallerName);
+        mPrefsEditor.putString("mCallerNumber", Dotcase.sStatus.mCallerNumber);
+        mPrefsEditor.commit();
+    }
+
+    synchronized void loadStatusPrefs(Context context) {
+        SharedPreferences mPrefs = context.getSharedPreferences("statusPrefs", Context.MODE_PRIVATE);
+
+        mRinging = mPrefs.getBoolean("mRinging", false);
+        mInCall = mPrefs.getBoolean("mInCall", false);
+        mCallerNumber = mPrefs.getString("mCallerNumber", "");
+        mCallerName = mPrefs.getString("mCallerName", "");
     }
 
     synchronized void checkNotifications(Context context) {

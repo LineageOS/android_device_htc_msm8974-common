@@ -91,6 +91,8 @@ public class Dotcase extends Activity implements SensorEventListener
         final DrawView drawView = new DrawView(mContext);
         setContentView(drawView);
 
+        sStatus.loadStatusPrefs(mContext);
+
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mDetector = new GestureDetector(mContext, new DotcaseGestureListener());
@@ -118,6 +120,8 @@ public class Dotcase extends Activity implements SensorEventListener
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY),
                 SensorManager.SENSOR_DELAY_NORMAL);
+
+        sStatus.loadStatusPrefs(mContext);
     }
 
     @Override
@@ -128,6 +132,8 @@ public class Dotcase extends Activity implements SensorEventListener
         } catch (IllegalArgumentException e) {
             Log.e(TAG, "Failed to unregister listener", e);
         }
+
+        sStatus.saveStatusPrefs(mContext);
     }
 
     class Service implements Runnable {
@@ -147,7 +153,7 @@ public class Dotcase extends Activity implements SensorEventListener
                     }
 
                     for (int i = 0; i <= timeout; i++) {
-                        if (sStatus.isResetTimer() || sStatus.isRinging() || sStatus.isAlarm()) {
+                        if (sStatus.isResetTimer() || sStatus.isRinging() || sStatus.isInCall() || sStatus.isAlarm()) {
                             i = 0;
                         }
 
@@ -190,6 +196,7 @@ public class Dotcase extends Activity implements SensorEventListener
     @Override
     public void onDestroy() {
         sStatus.stopRunning();
+        sStatus.saveStatusPrefs(mContext);
         super.onDestroy();
     }
 
@@ -223,6 +230,19 @@ public class Dotcase extends Activity implements SensorEventListener
                         telecomManager.endCall();
                     } else if (distanceY > 60) {
                         telecomManager.acceptRingingCall();
+                    }
+                } else if (sStatus.isInCall()) {
+                    sStatus.setOnTop(false);
+                    TelecomManager telecomManager = (TelecomManager) mContext.getSystemService(Context.TELECOM_SERVICE);
+                    AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+                    if (distanceY < 60) {
+                        telecomManager.endCall();
+                    } else if (distanceY > 60) {
+                        audioManager.setMode(AudioManager.MODE_IN_CALL);
+                        if (!audioManager.isSpeakerphoneOn())
+                            audioManager.setSpeakerphoneOn(true);
+                        else
+                            audioManager.setSpeakerphoneOn(false);
                     }
                 } else if (sStatus.isAlarm()) {
                     Intent i = new Intent();
