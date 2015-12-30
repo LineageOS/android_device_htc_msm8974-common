@@ -81,6 +81,10 @@ class CoverObserver extends UEventObserver {
                 if (screenOn) {
                     mPowerManager.goToSleep(SystemClock.uptimeMillis());
                 }
+                Dotcase.sStatus.loadStatusPrefs(mContext);
+                if (Dotcase.sStatus.isRinging() || Dotcase.sStatus.isInCall()) {
+                    mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                }
             } else {
                 killActivity();
                 if (!screenOn) {
@@ -114,11 +118,10 @@ class CoverObserver extends UEventObserver {
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            // If the case is open, don't try to do any of this
-            if (mSwitchState == 0) {
-                return;
-            }
-            Intent i = new Intent();
+            boolean screenOn = mPowerManager.isScreenOn();
+
+            Dotcase.sStatus.loadStatusPrefs(context);
+
             if (intent.getAction().equals(TelephonyManager.ACTION_PHONE_STATE_CHANGED)) {
                 String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
                 if (state.equals("RINGING")) {
@@ -155,16 +158,45 @@ class CoverObserver extends UEventObserver {
                     Dotcase.sStatus.setOnTop(true);
                     new Thread(new ensureTopActivity()).start();
 
-                } else {
+                } else if (state.equals("OFFHOOK")) { // Used for answered incoming calls
+                    if (Dotcase.sStatus.isRinging())
+                        Dotcase.sStatus.stopRinging();
+
+                    Dotcase.sStatus.startInCall();
+                    Dotcase.sStatus.setOnTop(true);
+                    new Thread(new ensureTopActivity()).start();
+                } else if (state.equals("IDLE")) {
                     Dotcase.sStatus.setOnTop(false);
                     Dotcase.sStatus.stopRinging();
+                    Dotcase.sStatus.stopInCall();
+                    Dotcase.sStatus.clearCallerInfo();
                 }
-            } else if (intent.getAction().equals("com.android.deskclock.ALARM_ALERT")) {
+            }
+
+            // If the case is open, don't try to do the rest
+            if (mSwitchState == 0) {
+                return;
+            }
+
+            Intent i = new Intent();
+            if (intent.getAction().equals("com.android.deskclock.ALARM_ALERT")) {
                 // add other alarm apps here
                 Dotcase.sStatus.startAlarm();
                 Dotcase.sStatus.setOnTop(true);
                 new Thread(new ensureTopActivity()).start();
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+                if (Dotcase.sStatus.isRinging() || Dotcase.sStatus.isInCall()) {
+                    if (Dotcase.sStatus.isPocketed()) {
+                        if (screenOn)
+                            mPowerManager.goToSleep(SystemClock.uptimeMillis());
+                    } else {
+                        if (!screenOn)
+                            mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                    }
+                    Dotcase.sStatus.setOnTop(true);
+                    new Thread(new ensureTopActivity()).start();
+                }
+
                 Dotcase.sStatus.resetTimer();
                 intent.setAction(DotcaseConstants.ACTION_REDRAW);
                 mContext.sendBroadcast(intent);
@@ -178,7 +210,7 @@ class CoverObserver extends UEventObserver {
     /**
      * Normalizes a string to lowercase without diacritics
      */
-    private static String normalize(String str) {
+    public static String normalize(String str) {
         return Normalizer.normalize(str.toLowerCase(), Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
                 .replaceAll("æ", "ae")
@@ -190,7 +222,6 @@ class CoverObserver extends UEventObserver {
     }
 
     public void killActivity() {
-        Dotcase.sStatus.stopRinging();
         Dotcase.sStatus.stopAlarm();
         Dotcase.sStatus.setOnTop(false);
 
@@ -204,7 +235,7 @@ class CoverObserver extends UEventObserver {
 
         @Override
         public void run() {
-            while ((Dotcase.sStatus.isRinging() || Dotcase.sStatus.isAlarm())
+            while ((Dotcase.sStatus.isRinging() || Dotcase.sStatus.isInCall() || Dotcase.sStatus.isAlarm())
                     && Dotcase.sStatus.isOnTop()) {
                 ActivityManager am =
                         (ActivityManager) mContext.getSystemService(Activity.ACTIVITY_SERVICE);

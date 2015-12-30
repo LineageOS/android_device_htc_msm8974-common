@@ -23,6 +23,7 @@ package org.cyanogenmod.dotcase;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.Settings;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
@@ -31,6 +32,13 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         Settings.Secure.putString(context.getContentResolver(),
                                   Settings.Secure.IMMERSIVE_MODE_CONFIRMATIONS,
                                   "org.cyanogenmod.dotcase");
+
+        /*
+         * Remove statusPrefs shared preferences, something might go wrong
+         * if starting this after a crash
+         */
+        SharedPreferences mPrefs = context.getSharedPreferences("statusPrefs", Context.MODE_PRIVATE);
+        mPrefs.edit().clear().commit();
 
         new CoverObserver(context).init();
     }

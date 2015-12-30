@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.media.AudioManager;
 import android.text.format.DateFormat;
 import android.view.View;
 
@@ -59,6 +60,10 @@ public class DrawView extends View {
             drawName(canvas);
             drawNumber(canvas);
             drawRinger(canvas);
+        } else if (Dotcase.sStatus.isInCall()) {
+            drawName(canvas);
+            drawNumber(canvas);
+            drawInCallScreen(canvas);
         } else if (Dotcase.sStatus.isVolumeChanged()) {
             if (mVolumeTimeout < 5) {
                 drawVolumeIndicator(canvas);
@@ -267,6 +272,58 @@ public class DrawView extends View {
         }
     }
 
+    private void drawInCallScreen(Canvas canvas) {
+        int light = 2, dark = 11;
+        int timeout = 0;
+        int handsetHeight = DotcaseConstants.handsetSprite.length;
+        int handsetWidth = DotcaseConstants.handsetSprite[0].length;
+        int ringerHeight = DotcaseConstants.inCallRingerSprite.length;
+        int ringerWidth = DotcaseConstants.inCallRingerSprite[0].length;
+
+        int[][] mHandsetSprite = new int[handsetHeight][handsetWidth];
+        int[][] mInCallRingerSprite = new int[ringerHeight][ringerWidth];
+
+        int ringCounter = Dotcase.sStatus.ringCounter();
+
+        AudioManager mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+
+        for (int i = 0; i < ringerHeight; i++) {
+            for (int j = 0; j < ringerWidth; j++) {
+                if (DotcaseConstants.inCallRingerSprite[i][j] > 0) {
+                    mInCallRingerSprite[i][j] =
+                            DotcaseConstants.inCallRingerSprite[i][j] == 3 - (ringCounter % 3)
+                                    ? light : dark;
+                }
+            }
+        }
+
+        for (int i = 0; i < handsetHeight; i++) {
+            for (int j = 0; j < handsetWidth; j++) {
+                mHandsetSprite[i][j] = DotcaseConstants.handsetSprite[i][j] > 0 ? light : 0;
+            }
+        }
+
+        if (ringCounter / 3 > 0) {
+            Collections.reverse(Arrays.asList(mHandsetSprite));
+            dotcaseDrawSprite(mHandsetSprite, 6, 41, canvas);
+        } else {
+            Collections.reverse(Arrays.asList(mInCallRingerSprite));
+            dotcaseDrawSprite(DotcaseConstants.speakerphoneSprite, 7, 24, canvas);
+            if (mAudioManager.isSpeakerphoneOn())
+                dotcaseDrawSprite(DotcaseConstants.speakerphoneOffSprite, 15, 25, canvas);
+            else
+                dotcaseDrawSprite(DotcaseConstants.speakerphoneOnSprite, 15, 24, canvas);
+        }
+
+        dotcaseDrawSprite(mInCallRingerSprite, 10, 34, canvas);
+
+        if (ringCounter > 4) {
+            Dotcase.sStatus.resetRingCounter();
+        } else {
+            Dotcase.sStatus.incrementRingCounter();
+        }
+    }
+
     private void drawBattery(Canvas canvas) {
         Intent batteryIntent = mContext.getApplicationContext().registerReceiver(null,
                     new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -384,7 +441,7 @@ public class DrawView extends View {
     private void drawName(Canvas canvas) {
         int[][] sprite;
         int x = 0, y = 2;
-        if (Dotcase.sStatus.isRinging()) {
+        if (Dotcase.sStatus.isRinging() || Dotcase.sStatus.isInCall()) {
             int nameOffset = Dotcase.sStatus.callerTicker();
 
             String name = Dotcase.sStatus.getCallerName();
@@ -415,7 +472,7 @@ public class DrawView extends View {
     private void drawNumber(Canvas canvas) {
         int[][] sprite;
         int x = 0, y = 8;
-        if (Dotcase.sStatus.isRinging()) {
+        if (Dotcase.sStatus.isRinging() || Dotcase.sStatus.isInCall()) {
             String number = Dotcase.sStatus.getCallerNumber();
             for (int i = 3; i < number.length() && i < 10; i++) {
                 sprite = DotcaseConstants.getSmallCharSprite(number.charAt(i));
