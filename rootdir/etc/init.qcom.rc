@@ -34,9 +34,6 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
     chown system system /sys/kernel/debug/kgsl/proc
-    write /sys/block/mmcblk0/queue/scheduler noop
-    write /sys/block/mmcblk0/bdi/read_ahead_kb 512
-    write /sys/block/mmcblk1/bdi/read_ahead_kb 512
 
 on init
     export LD_SHIM_LIBS "/system/lib/liblog.so|libshim_log.so:/system/lib/hw/camera.vendor.msm8974.so|libshim_camera.so"
