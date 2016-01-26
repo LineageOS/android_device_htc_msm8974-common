@@ -49,15 +49,12 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 1036800
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1190400
 
-    write /sys/module/cpubw_krait/parameters/enable 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chown root.system /sys/devices/system/cpu/mfreq
-    chmod 220 /sys/devices/system/cpu/mfreq
     chown root.system /sys/devices/system/cpu/cpu1/online
     chown root.system /sys/devices/system/cpu/cpu2/online
     chown root.system /sys/devices/system/cpu/cpu3/online
@@ -74,11 +71,7 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
-    write /dev/cpuctl/notify_on_migrate "1"
-
-    setprop ro.qualcomm.perf.cores_online 2
-
-    rm /data/system/default_values
+    write /dev/cpuctl/notify_on_migrate 1
 
 on boot
     trigger enable-low-power
@@ -87,4 +80,7 @@ on property:init.svc.recovery=running
     trigger enable-low-power
 
 on property:dev.bootcomplete=1
+    rm /data/system/perfd/default_values
+    setprop ro.qualcomm.perf.cores_online 2
     setprop sys.io.scheduler "bfq"
+    start mpdecision

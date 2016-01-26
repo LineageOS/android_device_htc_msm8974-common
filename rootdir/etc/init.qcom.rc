@@ -280,9 +280,10 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     oneshot
 
 service mpdecision /system/bin/mpdecision --avg_comp
-    class late_start
+    class main
     user root
     group root readproc
+    disabled
 
 service netmgrd /system/bin/netmgrd
     class core
