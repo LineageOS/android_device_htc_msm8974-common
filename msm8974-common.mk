@@ -198,8 +198,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8974
 
-# Radio
+# RIL
 PRODUCT_PACKAGES += \
+    libshim_ril \
     libxml2
 
 # Thermal
