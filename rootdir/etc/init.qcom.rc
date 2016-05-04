@@ -341,7 +341,7 @@ service hcheck /system/bin/hcheck
     group system
     oneshot
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.bluedroid.sh
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
