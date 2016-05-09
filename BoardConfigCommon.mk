@@ -69,9 +69,6 @@ BLUETOOTH_HCI_USE_MCT := true
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
-# Font
-EXTENDED_FONT_FOOTPRINT := true
-
 # FM Radio
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
