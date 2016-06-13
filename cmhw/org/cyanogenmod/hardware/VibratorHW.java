@@ -17,15 +17,14 @@
 package org.cyanogenmod.hardware;
 
 import java.io.File;
-import org.cyanogenmod.hardware.util.FileUtils;
+import org.cyanogenmod.internal.util.FileUtils;
 
 public class VibratorHW {
 
     private static String LEVEL_PATH = "/sys/devices/virtual/timed_output/vibrator/voltage_level";
 
     public static boolean isSupported() {
-        File f = new File(LEVEL_PATH);
-        return f.exists();
+        FileUtils.isFileWriteable(LEVEL_PATH);
     }
 
     public static int getMaxIntensity()  {
