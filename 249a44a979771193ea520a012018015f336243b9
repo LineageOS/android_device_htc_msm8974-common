@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_d6a6c9ab",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2016-06-16T21:07:46Z",
+      "side": 1,
+      "message": "Why is this here?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "249a44a979771193ea520a012018015f336243b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
