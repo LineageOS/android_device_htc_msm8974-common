@@ -22,6 +22,30 @@
       "revId": "249a44a979771193ea520a012018015f336243b9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_f66d0532",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-06-16T23:01:15Z",
+      "side": 1,
+      "message": "the way i understand it, it lets us have hardware/cyanogen/cmhw without having to use BOARD_HARDWARE_CLASS\n\nhttps://github.com/CyanogenMod/android_hardware_cyanogen/blob/cm-13.0/Android.mk#L3\n\nmaybe i\u0027m misunderstanding though",
+      "parentUuid": "5faad753_d6a6c9ab",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "249a44a979771193ea520a012018015f336243b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
