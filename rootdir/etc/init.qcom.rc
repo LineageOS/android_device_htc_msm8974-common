@@ -62,10 +62,6 @@ on init
     chown nfc nfc /sys/class/NFC_sensor/comn/nxp_uicc_swp
     chmod 0664 /sys/class/NFC_sensor/comn/nxp_uicc_swp
 
-    # Vibrator permission
-    chown system /sys/devices/virtual/timed_output/vibrator/voltage_level
-    restorecon /sys/devices/virtual/timed_output/vibrator/voltage_level
-
     # Quick Charge 2.0 daemon
     setprop persist.usb.hvdcp.detect "true"
 
