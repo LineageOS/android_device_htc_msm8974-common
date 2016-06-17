@@ -46,6 +46,30 @@
       "revId": "249a44a979771193ea520a012018015f336243b9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_11db0b7c",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2016-06-17T06:04:40Z",
+      "side": 1,
+      "message": "My understanding is that with this flag, all-makefiles-under hardware/cyanogen path will be included (only useful if someone wants to build one of the lights modules available there). The Java classes don\u0027t, I guess.",
+      "parentUuid": "5faad753_f66d0532",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "249a44a979771193ea520a012018015f336243b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
