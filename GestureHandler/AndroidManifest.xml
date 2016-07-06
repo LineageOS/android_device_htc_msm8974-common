@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.cyanogenmod.gesturehandler"
+      android:versionCode="1"
+      android:versionName="1.0"
+      android:sharedUserId="android.uid.systemui">
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <application android:label="GestureHandler" android:process="com.android.systemui">
+        <receiver android:name="org.cyanogenmod.gesturehandler.BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <service android:name="CoverObserver" android:permission="CoverObserver">
+            <intent-filter>
+                <action android:name="CoverObserver"/>
+            </intent-filter>
+        </service>
+        <service android:name="ScreenStateService" android:permission="ScreenStateService">
+            <intent-filter>
+                <action android:name="ScreenStateService"/>
+            </intent-filter>
+        </service>
+        <service android:name="SensorService" android:permission="SensorService">
+            <intent-filter>
+                <action android:name="SensorService"/>
+            </intent-filter>
+        </service>
+        <activity
+                  android:excludeFromRecents="true"
+                  android:name="GestureHandler"
+                  android:label="GestureHandler"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+                  android:windowAnimationStyle="@null">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
