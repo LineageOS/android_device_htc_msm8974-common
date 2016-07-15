@@ -29,13 +29,13 @@
 		</resource>
 
 		<!-- device-specific -->
-		<resource name="backlight" type="sysfs">/sys/devices/mdp.0/qcom,mdss_fb_primary.173/leds/lcd-backlight-nits/max_brightness</resource>
+		<resource name="backlight" type="sysfs">/sys/devices/mdp.0/qcom,mdss_fb_primary.174/leds/lcd-backlight-nits/max_brightness</resource>
 		<resource name="charger" type="sysfs">/sys/devices/platform/htc_battery/power_supply/battery/batt_temp_now</resource>
 		<resource name="charge_en" type="sysfs">/sys/class/power_supply/battery/charging_enabled</resource>
 		<resource name="dc" type="sysfs">/sys/devices/platform/htc_battery/power_supply/ac/current_max</resource>
-		<resource name="temp-batt" type="msm-adc">/sys/devices/qpnp-vadc-ef987600/batt_therm</resource>
-		<resource name="temp-emmc" type="msm-adc">/sys/devices/qpnp-vadc-ef987600/emmc_therm</resource>
-		<resource name="temp-quiet" type="msm-adc">/sys/devices/qpnp-vadc-ef987600/quiet_therm</resource>
+		<resource name="temp-batt" type="msm-adc">/sys/class/hwmon/hwmon1/../../batt_therm</resource>
+		<resource name="temp-emmc" type="msm-adc">/sys/class/hwmon/hwmon1/../../emmc_therm</resource>
+		<resource name="temp-quiet" type="msm-adc">/sys/class/hwmon/hwmon1/../../quiet_therm</resource>
 		<resource name="gpu" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
 		<resource name="temp-core" type="alias" resource="zone2" />
 		<resource name="usb" type="sysfs">/sys/class/power_supply/usb/current_max</resource>
