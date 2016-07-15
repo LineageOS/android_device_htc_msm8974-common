@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_a2526e66",
+        "filename": "dotcase/src/org/cyanogenmod/dotcase/SensorService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-07-15T02:43:10Z",
+      "side": 1,
+      "message": "as on m9, this probably causes a non DOUBLE_TAP gesture to disable the listener (but not really do anything else) until screen on/off again\n\nmy intention is to build out the ability to customize the actions that happen with the swipe gestures",
+      "revId": "916da1849a695507546a8d770aedf08828edc64b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
