@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015 The CyanogenMod Project
+     Copyright (C) 2016 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -20,12 +20,18 @@
 
     <string name="screen_actions_title">Screen actions</string>
 
+    <string name="double_tap_enable_title">Double tap to wake device</string>
+    <string name="double_tap_enable_summary">Wake the device by double tapping on the screen</string>
+
     <string name="swipe_up_title">Swipe up</string>
     <string name="swipe_up_summary">Action when using the swipe up gesture</string>
+
     <string name="swipe_right_title">Swipe right</string>
     <string name="swipe_right_summary">Action when using the swipe right gesture</string>
+
     <string name="swipe_down_title">Swipe down</string>
     <string name="swipe_down_summary">Action when using the swipe down gesture</string>
+
     <string name="swipe_left_title">Swipe left</string>
     <string name="swipe_left_summary">Action when using the swipe left gesture</string>
 
