@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2015 The CyanogenMod Project
+     Copyright (C) 2016 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License"
      you may not use this file except in compliance with the License.
@@ -21,9 +21,15 @@
         android:key="screen_actions_key"
         android:title="@string/screen_actions_title" >
 
+        <SwitchPreference
+            android:key="double_tap_enable_key"
+            android:defaultValue="false"
+            android:title="@string/double_tap_enable_title"
+            android:summary="@string/double_tap_enable_summary" />
+
         <ListPreference
             android:key="swipe_up_action_key"
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:title="@string/swipe_up_title"
             android:dialogTitle="@string/swipe_up_title"
             android:summary="@string/swipe_up_summary"
@@ -31,17 +37,8 @@
             android:entryValues="@array/action_values" />
 
         <ListPreference
-            android:key="swipe_right_action_key"
-            android:defaultValue="1"
-            android:title="@string/swipe_right_title"
-            android:dialogTitle="@string/swipe_right_title"
-            android:summary="@string/swipe_right_summary"
-            android:entries="@array/action_entries"
-            android:entryValues="@array/action_values" />
-
-        <ListPreference
             android:key="swipe_down_action_key"
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:title="@string/swipe_down_title"
             android:dialogTitle="@string/swipe_down_title"
             android:summary="@string/swipe_down_summary"
@@ -50,10 +47,19 @@
 
         <ListPreference
             android:key="swipe_left_action_key"
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:title="@string/swipe_left_title"
             android:dialogTitle="@string/swipe_left_title"
             android:summary="@string/swipe_left_summary"
+            android:entries="@array/action_entries"
+            android:entryValues="@array/action_values" />
+
+        <ListPreference
+            android:key="swipe_right_action_key"
+            android:defaultValue="0"
+            android:title="@string/swipe_right_title"
+            android:dialogTitle="@string/swipe_right_title"
+            android:summary="@string/swipe_right_summary"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
