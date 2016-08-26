@@ -34,10 +34,10 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Dot View Case
-PRODUCT_PACKAGES += Dotcase
+#PRODUCT_PACKAGES += Dotcase
 
 # Gesture Handler
-PRODUCT_PACKAGES += GestureHandler
+#PRODUCT_PACKAGES += GestureHandler
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -102,10 +102,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # FM Radio
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
+#PRODUCT_PACKAGES += \
+#    FM2 \
+#    libqcomfm_jni \
+#    qcom.fmradio
 
 # HTC logging symbols
 PRODUCT_PACKAGES += \
