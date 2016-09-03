@@ -16,10 +16,8 @@
 
 package com.cyanogenmod.settings.device;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.view.MenuItem;
 
 import org.cyanogenmod.internal.util.ScreenType;
 
@@ -29,8 +27,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.gesture_panel);
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -41,14 +37,5 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         if (!ScreenType.isTablet(this)) {
             getListView().setPadding(0, 0, 0, 0);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return false;
     }
 }
