@@ -85,6 +85,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.jbims=1 \
     DEVICE_PROVISIONED=1
 
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
