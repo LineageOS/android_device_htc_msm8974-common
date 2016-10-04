@@ -271,12 +271,6 @@ service audiod /system/bin/audiod
     user system
     group system
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class late_start
-    user root
-    seclabel u:r:bluetooth_loader:s0
-    oneshot
-
 service fm_dl /system/bin/setprop hw.fm.init 1
     class late_start
     user root
