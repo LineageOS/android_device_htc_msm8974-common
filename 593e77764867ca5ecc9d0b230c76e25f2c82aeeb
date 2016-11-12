@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_8dbb7b0c",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 14592
+      },
+      "writtenOn": "2016-11-12T13:25:50Z",
+      "side": 1,
+      "message": "libshim_camera.so|/system/vendor/lib/libwvm.so\n\n@Fiz You put | instead of :",
+      "range": {
+        "startLine": 42,
+        "startChar": 154,
+        "endLine": 42,
+        "endChar": 230
+      },
+      "revId": "593e77764867ca5ecc9d0b230c76e25f2c82aeeb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
