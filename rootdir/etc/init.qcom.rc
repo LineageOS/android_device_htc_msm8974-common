@@ -39,7 +39,8 @@ on early-init
     write /sys/block/mmcblk1/bdi/read_ahead_kb 512
 
 on init
-    export LD_SHIM_LIBS "/system/lib/liblog.so|libshim_log.so:/system/lib/hw/camera.vendor.msm8974.so|/system/lib/libshim_camera.so|/system/lib/libshim_camera.so:/system/vendor/lib/libwvm.so|libshims_wvm.so"
+
+    export LD_SHIM_LIBS "/system/lib/liblog.so|libshim_log.so:/system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so:/system/lib/hw/camera.vendor.msm8974.so|/system/lib/libshim_camera.so|/system/vendor/lib/libwvm.so|libshims_wvm.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -390,12 +391,6 @@ service rmt_storage /system/bin/rmt_storage modem_st1 modem_st2 fsc recovery rad
     class core
     user root
 
-# OSS thermal management
-service thermanager /system/bin/thermanager /system/etc/thermanager.xml
-    class late_start
-    user root
-    group root
-
 service time_daemon /system/bin/time_daemon
    class late_start
    user root
@@ -449,6 +444,16 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/restart_adbd 1
 
 on property:sys.boot_completed=1
+    write /sys/module/msm_hotplug/boost_lock_duration 4000
+    write /sys/module/msm_hotplug/cpus_boosted 1
+    write /sys/module/msm_hotplug/down_lock_duration 1000
+    write /sys/module/msm_hotplug/enabled 1
+    write /sys/module/msm_hotplug/fast_lane_load 178
+    write /sys/module/msm_hotplug/history_size 10
+    write /sys/module/msm_hotplug/max_cpus_online 4
+    write /sys/module/msm_hotplug/min_cpus_online 1
+    write /sys/module/msm_hotplug/offline_load 29
+    write /sys/module/msm_hotplug/update_rate 10
     start qrngp
 
 # Quick Charge 2.0
