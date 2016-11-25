@@ -105,10 +105,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshim_camera
 
-# DRM
-PRODUCT_PACKAGES += \
-    libshims_wvm
-
 # FM Radio
 PRODUCT_PACKAGES += \
     FM2 \
