@@ -100,8 +100,6 @@ on post-fs-data
     # Radio permissions
     mkdir /dev/radio 0770 radio radio
 
-    restorecon /data/OTPData.dat
-
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     # Create the directory used by CnE subsystem
