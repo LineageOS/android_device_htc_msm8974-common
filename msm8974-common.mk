@@ -33,8 +33,8 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Dot View Case
-PRODUCT_PACKAGES += Dotcase
+# FlipFlap
+PRODUCT_PACKAGES += FlipFlap
 
 # Gesture Handler
 PRODUCT_PACKAGES += GestureHandler
