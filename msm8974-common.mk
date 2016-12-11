@@ -34,7 +34,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Dot View Case
-PRODUCT_PACKAGES += Dotcase
+PRODUCT_PACKAGES += QuickCover
 
 # Gesture Handler
 PRODUCT_PACKAGES += GestureHandler
