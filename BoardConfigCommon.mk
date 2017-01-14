@@ -33,7 +33,6 @@ TARGET_NO_BOOTLOADER := true
 # Platform
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
-TARGET_NEEDS_GCC_LIBC := true
 
 # Architecture
 TARGET_ARCH := arm
