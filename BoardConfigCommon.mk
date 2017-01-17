@@ -79,6 +79,7 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
 # FM Radio
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Graphics
