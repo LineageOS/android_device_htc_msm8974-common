@@ -248,13 +248,6 @@ service adsprpcd /system/bin/adsprpcd
     user media
     group media
 
-service fm_dl /system/bin/setprop hw.fm.init 1
-    class late_start
-    user root
-    group system fm_radio
-    disabled
-    oneshot
-
 service hcheck /system/bin/hcheck
     class late_start
     user system
