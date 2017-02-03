@@ -143,3 +143,8 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # Hardware
 BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
+
+# TWRP Support - Optional
+ifeq ($(WITH_TWRP),true)
+-include device/htc/msm8974-common/twrp.mk
+endif
