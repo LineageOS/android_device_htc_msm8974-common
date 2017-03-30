@@ -56,7 +56,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
-    mm.enable.smoothstreaming=true
+    mm.enable.smoothstreaming=true \
+    persist.media.treble_omx=false
 
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
