@@ -96,20 +96,34 @@ public class SensorService extends Service implements SensorEventListener {
     }
 
     public final void onSensorChanged(SensorEvent sensorEvent) {
+    	mSensorManager.unregisterListener(mSensorEventListener);
+    	float gesture = sensorEvent.values[0];
         if (DEBUG) Log.d(TAG, "Sensor type=" + sensorEvent.sensor.getType()
                 + "," + sensorEvent.values[0] + "," + sensorEvent.values[1]);
+        startAction((int) gesture);
+    }
 
-        switch ((int)sensorEvent.values[0]) {
+    private void startAction(int gesture) {
+    	switch (gesture) {
             case DOUBLE_TAP:
                 mPowerManager.wakeUp(SystemClock.uptimeMillis());
                 break;
-            // TODO
             case SWIPE_UP:
+                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                break;
             case SWIPE_DOWN:
+                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                break;
             case SWIPE_RIGHT:
+                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                break;
             case SWIPE_LEFT:
+                mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                break;
             case CAMERA:
             default:
         }
+        mSensorManager.registerListener(mSensorEventListener,
+				mSensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 }
