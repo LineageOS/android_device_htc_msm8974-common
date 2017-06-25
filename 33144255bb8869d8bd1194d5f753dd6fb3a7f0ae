@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_45004801",
+        "filename": "GestureHandler/src/com/cyanogenmod/settings/device/SensorService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-06-25T14:21:55Z",
+      "side": 1,
+      "message": "please don\u0027t mix tabs and spaces (that goes for this entire change)",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 5
+      },
+      "revId": "33144255bb8869d8bd1194d5f753dd6fb3a7f0ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_65054c10",
+        "filename": "GestureHandler/src/com/cyanogenmod/settings/device/SensorService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-06-25T14:21:55Z",
+      "side": 1,
+      "message": "all these cases don\u0027t need their own wakeup/break line. they can fall through",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 26
+      },
+      "revId": "33144255bb8869d8bd1194d5f753dd6fb3a7f0ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
