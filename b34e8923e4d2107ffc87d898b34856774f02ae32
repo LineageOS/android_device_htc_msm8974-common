@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_749f3f60",
+        "filename": "overlay/packages/apps/FlipFlap/res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 6753
+      },
+      "writtenOn": "2017-06-26T12:19:31Z",
+      "side": 1,
+      "message": "Drop these 2 overlays for paths.",
+      "revId": "b34e8923e4d2107ffc87d898b34856774f02ae32",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
