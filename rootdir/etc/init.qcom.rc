@@ -251,27 +251,10 @@ service adsprpcd /system/bin/adsprpcd
     user media
     group media
 
-service audiod /system/bin/audiod
-    class late_start
-    user system
-    group system
-
 service fm_dl /system/bin/setprop hw.fm.init 1
     class late_start
     user root
     group system fm_radio
-    disabled
-    oneshot
-
-service ftp /system/bin/sdptool add --handle=0x1ff20 --psm=5257 --channel=20 FTP
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service ftp_del /system/bin/sdptool del 0x1ff20
-    user bluetooth
-    group bluetooth net_bt_admin
     disabled
     oneshot
 
@@ -297,30 +280,6 @@ service hvdcp /system/bin/hvdcp
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
-    oneshot
-
-service map0 /system/bin/sdptool add --handle=0x1ff16 --channel=16 MAS0
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service map0_del /system/bin/sdptool del 0x1ff16
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service map1 /system/bin/sdptool add --handle=0x1ff17 --channel=17 MAS1
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service map1_del /system/bin/sdptool del 0x1ff17
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
     oneshot
 
 service mpdecision /system/bin/mpdecision --avg_comp
@@ -403,12 +362,6 @@ on property:bluetooth.hciattach=true
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
-on property:bluetooth.sap.status=running
-    start bt-sap
-
-on property:bluetooth.sap.status=stopped
-    stop bt-sap
-
 on property:init.svc.bootanim=stopped
     # Overwrite ActivityManager's low memory killer settings
     write /sys/module/lowmemorykiller/parameters/adj "2,4,7,8,9,12"
@@ -418,15 +371,5 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-on property:ro.use_data_netmgrd=true
-   start netmgrd
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
-
 on property:service.adb.root=1
     write /sys/class/android_usb/android0/restart_adbd 1
-
-on property:sys.boot_completed=1
-    start qrngp
