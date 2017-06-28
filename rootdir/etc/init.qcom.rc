@@ -342,7 +342,7 @@ service map1_del /system/bin/sdptool del 0x1ff17
 service mpdecision /system/bin/mpdecision --avg_comp
     class late_start
     user root
-    group system
+    group root readproc
 
 service netmgrd /system/bin/netmgrd
     class core
