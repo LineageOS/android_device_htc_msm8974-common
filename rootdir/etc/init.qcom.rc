@@ -331,8 +331,8 @@ service rmt_storage /system/bin/rmt_storage modem_st1 modem_st2 fsc recovery rad
 # OSS thermal management
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     class late_start
-    user root
-    group root
+    user system
+    group system
 
 service time_daemon /system/bin/time_daemon
    class late_start
