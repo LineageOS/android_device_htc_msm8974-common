@@ -63,9 +63,6 @@ on init
     chown nfc nfc /sys/class/NFC_sensor/comn/nxp_uicc_swp
     chmod 0664 /sys/class/NFC_sensor/comn/nxp_uicc_swp
 
-    # Quick Charge 2.0 daemon
-    setprop persist.usb.hvdcp.detect "true"
-
     # Gestures
     chown system system /sys/class/htc_sensorhub/sensor_hub/gesture_motion
     chmod 0664 /sys/class/htc_sensorhub/sensor_hub/gesture_motion
@@ -308,7 +305,6 @@ service hvdcp /system/bin/hvdcp
     class core
     user root
     group root
-    disabled
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -446,10 +442,3 @@ on property:service.adb.root=1
 
 on property:sys.boot_completed=1
     start qrngp
-
-# Quick Charge 2.0
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
