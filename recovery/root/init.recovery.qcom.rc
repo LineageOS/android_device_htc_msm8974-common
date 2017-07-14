@@ -28,6 +28,8 @@ on boot
     start chargeled
     write /sys/devices/platform/android_usb/usb_function_switch 3
 
+    setprop sys.usb.ffs.aio_compat 1
+
 on charger
     start choice_fn
     start chargeled
