@@ -122,7 +122,7 @@ public class GestureMotionSensor {
             return;
         }
 
-        if (!FileUtils.writeLine(CONTROL_PATH, Integer.toHexString(mEnabledGestures))) {
+        if (!FileUtils.writeLine(CONTROL_PATH, "0x" + Integer.toHexString(mEnabledGestures))) {
             Log.w(TAG, "Failed to write control path, unable to disable sensor");
             return;
         }
@@ -137,7 +137,7 @@ public class GestureMotionSensor {
             return;
         }
 
-        if (!FileUtils.writeLine(CONTROL_PATH, Integer.toHexString(0))) {
+        if (!FileUtils.writeLine(CONTROL_PATH, "0x" + Integer.toHexString(0))) {
             Log.w(TAG, "Failed to write control path, unable to disable sensor");
             return;
         }
