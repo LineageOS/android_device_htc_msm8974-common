@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1578e55_8e88384d",
+        "filename": "gestures/src/com/cyanogenmod/settings/device/GestureMotionSensor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-08-11T03:06:51Z",
+      "side": 1,
+      "message": "Maybe: String.format(\"0x%08X\", mEnabledGestures)); ?",
+      "revId": "5d61aa7a450c70ac47ac0f911b293183a0c447bf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
