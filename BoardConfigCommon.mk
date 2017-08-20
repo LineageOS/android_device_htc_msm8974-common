@@ -77,6 +77,11 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
+# CMHW
+BOARD_HARDWARE_CLASS += \
+    hardware/cyanogen/cmhw \
+    $(PLATFORM_PATH)/cmhw
+
 # FM Radio
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 BOARD_HAVE_QCOM_FM := true
@@ -136,6 +141,3 @@ BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_DEVICE_DIRS += $(PLATFORM_PATH)
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
-
-# Hardware
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
