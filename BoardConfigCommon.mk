@@ -22,7 +22,7 @@
 # definition file).
 #
 
-LOCAL_PATH := device/htc/msm8974-common
+PLATFORM_PATH := device/htc/msm8974-common
 
 BOARD_VENDOR := htc
 
@@ -135,9 +135,9 @@ BOARD_GLOBAL_CFLAGS := -DBOARD_RECOVERY_BLDRMSG_OFFSET=2048
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USES_MMCUTILS := true
-TARGET_RECOVERY_DEVICE_DIRS += device/htc/msm8974-common
+TARGET_RECOVERY_DEVICE_DIRS += $(PLATFORM_PATH)
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
 # Hardware
 BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
