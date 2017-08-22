@@ -219,6 +219,9 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
+    # To prevent permission denied error for telephony
+    chmod 0644 /proc/cmdline
+
     # Load ADSP
     write /sys/kernel/boot_adsp/boot 1
 
