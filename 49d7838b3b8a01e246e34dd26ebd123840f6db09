@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ee57a6e_d78dd38e",
+        "filename": "cmhw/org/cyanogenmod/hardware/TouchscreenGestures.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2017-08-22T06:34:58Z",
+      "side": 1,
+      "message": "line length",
+      "range": {
+        "startLine": 41,
+        "startChar": 100,
+        "endLine": 41,
+        "endChar": 110
+      },
+      "revId": "49d7838b3b8a01e246e34dd26ebd123840f6db09",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
