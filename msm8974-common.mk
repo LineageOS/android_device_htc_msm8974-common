@@ -25,8 +25,7 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -37,10 +36,10 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # FlipFlap
-PRODUCT_PACKAGES += FlipFlap
+#PRODUCT_PACKAGES += FlipFlap
 
 # Gesture Handler
-PRODUCT_PACKAGES += GestureHandler
+#PRODUCT_PACKAGES += GestureHandler
 
 # Ramdisk
 PRODUCT_PACKAGES += \
