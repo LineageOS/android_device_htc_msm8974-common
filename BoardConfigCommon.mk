@@ -44,6 +44,7 @@ TARGET_CPU_VARIANT := krait
 # Kernel
 BOARD_DTBTOOL_ARGS := --dt-tag "htc,project-id = <"
 BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -51,7 +52,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02008000 -
 TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 
 # QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
+#BOARD_USES_QCOM_HARDWARE := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -60,7 +61,9 @@ AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
-USE_CUSTOM_AUDIO_POLICY := 1
+#USE_CUSTOM_AUDIO_POLICY := 1
+BOARD_USES_GENERIC_AUDIO := true
+TARGET_USES_QCOM_MM_AUDIO := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -94,18 +97,6 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
-
-# RIL
-TARGET_RIL_VARIANT := caf
-
-# RPC
-TARGET_NO_RPC := true
-
-# SDClang
-TARGET_USE_SDCLANG := true
-
-# Time services
-BOARD_USES_QC_TIME_SERVICES := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
