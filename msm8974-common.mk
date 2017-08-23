@@ -24,8 +24,7 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -36,10 +35,10 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # FlipFlap
-PRODUCT_PACKAGES += FlipFlap
+#PRODUCT_PACKAGES += FlipFlap
 
 # Gesture Handler
-PRODUCT_PACKAGES += GestureHandler
+#PRODUCT_PACKAGES += GestureHandler
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -83,7 +82,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@2.0-impl \
     audio.a2dp.default \
-    audio_amplifier.msm8974 \
     audio_policy.msm8974 \
     audio.primary.msm8974 \
     audio.r_submix.default \
