@@ -44,6 +44,7 @@ TARGET_CPU_VARIANT := krait
 # Kernel
 BOARD_DTBTOOL_ARGS := --dt-tag "htc,project-id = <"
 BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -77,9 +78,9 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
 # FM Radio
-AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
-BOARD_HAVE_QCOM_FM := true
-TARGET_QCOM_NO_FM_FIRMWARE := true
+#AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+#BOARD_HAVE_QCOM_FM := true
+#TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Graphics
 TARGET_USES_ION := true
