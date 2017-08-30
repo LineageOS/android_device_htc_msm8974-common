@@ -1,5 +1,6 @@
 #
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2015-2016 The CyanogenMod Project
+#               2017 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -81,6 +82,10 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
+# GPS
+USE_DEVICE_SPECIFIC_GPS := true
+USE_DEVICE_SPECIFIC_LOC_API := true
+
 # Graphics
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
@@ -97,9 +102,6 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # RIL
 TARGET_RIL_VARIANT := caf
-
-# RPC
-TARGET_NO_RPC := true
 
 # SDClang
 TARGET_USE_SDCLANG := true

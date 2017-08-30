@@ -1,5 +1,6 @@
 #
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2015-2016 The CyanogenMod Project
+#               2017 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -118,6 +119,9 @@ PRODUCT_PACKAGES += \
     libshim_log
 
 # GPS
+PRODUCT_PACKAGES += \
+    gps.msm8974
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
     $(LOCAL_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
