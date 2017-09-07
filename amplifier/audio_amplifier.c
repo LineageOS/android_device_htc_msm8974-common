@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2013, The CyanogenMod Project
+ * Copyright (C) 2013-2015 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +29,8 @@
 
 #include <msm8974/platform.h>
 
+#include "rt5506.h"
 #include "tfa9887.h"
-#include "rt5501.h"
 
 #define UNUSED __attribute__((unused))
 
@@ -59,7 +60,7 @@ static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
         case SND_DEVICE_OUT_VOICE_HEADPHONES:
         case SND_DEVICE_OUT_VOIP_HEADPHONES:
         case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
-            rt5501_set_mode(dev->current_mode);
+            rt5506_set_mode(dev->current_mode);
             break;
     }
     return 0;

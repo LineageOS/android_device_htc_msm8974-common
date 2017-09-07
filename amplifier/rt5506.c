@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2013, The CyanogenMod Project
+ * Copyright (C) 2013-2015 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +15,20 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "rt5501"
+#define LOG_TAG "rt5506"
 //#define LOG_NDEBUG 0
 
-#include <stdio.h>
-#include <sys/ioctl.h>
-#include <fcntl.h>
+#include "rt5506.h"
 
-#include <system/audio.h>
+#include <linux/rt5506.h>
 
 #include <cutils/log.h>
 
-#include "rt5501.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <sys/ioctl.h>
 
-static struct rt5501_reg_data rt5501_playback_data[] = {
+static struct rt5506_reg_data rt5506_playback_data[] = {
     { 0x00, 0xC0, },
     { 0x01, 0x1A, }, // gain -2dB
     { 0x02, 0x80, }, // noise gate on
@@ -40,7 +41,7 @@ static struct rt5501_reg_data rt5501_playback_data[] = {
     { 0x90, 0x93, }, // fix 1X mode
 };
 
-static struct rt5501_reg_data rt5501_playback_128_data[] = {
+static struct rt5506_reg_data rt5506_playback_128_data[] = {
     { 0x00, 0xC0, },
     { 0x01, 0x1D, }, // gain +1dB
     { 0x02, 0x80, }, // noise gate on
@@ -53,7 +54,7 @@ static struct rt5501_reg_data rt5501_playback_128_data[] = {
     { 0x90, 0x93, }, // fix 1X mode
 };
 
-static struct rt5501_reg_data rt5501_ring_data[] = {
+static struct rt5506_reg_data rt5506_ring_data[] = {
     { 0x00, 0xC0, },
     { 0x01, 0x0C, }, // gain -16dB
     { 0x02, 0x81, }, // noise gate on
@@ -64,7 +65,7 @@ static struct rt5501_reg_data rt5501_ring_data[] = {
     { 0x0B, 0xC7, }, // noise gate -35dB
 };
 
-static struct rt5501_reg_data rt5501_voice_data[] = {
+static struct rt5506_reg_data rt5506_voice_data[] = {
     { 0x00, 0xC0, },
     { 0x01, 0x1C, }, // gain 0dB
     { 0x02, 0x00, }, // noise gate off
@@ -76,21 +77,21 @@ static struct rt5501_reg_data rt5501_voice_data[] = {
     { 0x90, 0x93, }, //fix 1X mode
 };
 
-int rt5501_set_mode(audio_mode_t mode) {
-    struct rt5501_comm_data amp_data;
-    struct rt5501_config amp_config;
+int rt5506_set_mode(audio_mode_t mode) {
+    struct rt5506_comm_data amp_data;
+    struct rt5506_config amp_config;
     int headsetohm = HEADSET_OM_UNDER_DETECT;
-    int rt5501_fd;
+    int fd;
     int ret = -1;
 
     /* Open the amplifier device */
-    if ((rt5501_fd = open(RT5501_DEVICE, O_RDWR)) < 0) {
-        ALOGE("error opening amplifier device %s", RT5501_DEVICE);
+    if ((fd = open(RT5506_DEVICE, O_RDWR)) < 0) {
+        ALOGE("error opening amplifier device %s", RT5506_DEVICE);
         return -1;
     }
 
     /* Get impedance of headset */
-    if (ioctl(rt5501_fd, RT5501_QUERY_OM, &headsetohm) < 0)
+    if (ioctl(fd, AMP_QUERY_OM, &headsetohm) < 0)
         ALOGE("error querying headset impedance");
 
     switch(mode) {
@@ -99,39 +100,39 @@ int rt5501_set_mode(audio_mode_t mode) {
             /* For headsets with a impedance between 128ohm and 1000ohm */
             if (headsetohm >= HEADSET_128OM && headsetohm <= HEADSET_1KOM) {
                 ALOGI("Mode: Playback 128");
-                amp_config.reg_len = sizeof(rt5501_playback_128_data) / sizeof(struct rt5501_reg_data);
-                memcpy(&amp_config.reg, rt5501_playback_128_data, sizeof(rt5501_playback_128_data));
+                amp_config.reg_len = sizeof(rt5506_playback_128_data) / sizeof(struct rt5506_reg_data);
+                memcpy(&amp_config.reg, rt5506_playback_128_data, sizeof(rt5506_playback_128_data));
             } else {
                 ALOGI("Mode: Playback");
-                amp_config.reg_len = sizeof(rt5501_playback_data) / sizeof(struct rt5501_reg_data);
-                memcpy(&amp_config.reg, rt5501_playback_data, sizeof(rt5501_playback_data));
+                amp_config.reg_len = sizeof(rt5506_playback_data) / sizeof(struct rt5506_reg_data);
+                memcpy(&amp_config.reg, rt5506_playback_data, sizeof(rt5506_playback_data));
             }
-            amp_data.out_mode = RT5501_MODE_PLAYBACK;
+            amp_data.out_mode = PLAYBACK_MODE_PLAYBACK;
             amp_data.config = amp_config;
             break;
         case AUDIO_MODE_RINGTONE:
             ALOGI("Mode: Ring");
-            amp_config.reg_len = sizeof(rt5501_ring_data) / sizeof(struct rt5501_reg_data);
-            memcpy(&amp_config.reg, rt5501_ring_data, sizeof(rt5501_ring_data));
-            amp_data.out_mode = RT5501_MODE_RING;
+            amp_config.reg_len = sizeof(rt5506_ring_data) / sizeof(struct rt5506_reg_data);
+            memcpy(&amp_config.reg, rt5506_ring_data, sizeof(rt5506_ring_data));
+            amp_data.out_mode = PLAYBACK_MODE_RING;
             amp_data.config = amp_config;
             break;
         case AUDIO_MODE_IN_CALL:
         case AUDIO_MODE_IN_COMMUNICATION:
             ALOGI("Mode: Voice");
-            amp_config.reg_len = sizeof(rt5501_voice_data) / sizeof(struct rt5501_reg_data);
-            memcpy(&amp_config.reg, rt5501_voice_data, sizeof(rt5501_voice_data));
-            amp_data.out_mode = RT5501_MODE_VOICE;
+            amp_config.reg_len = sizeof(rt5506_voice_data) / sizeof(struct rt5506_reg_data);
+            memcpy(&amp_config.reg, rt5506_voice_data, sizeof(rt5506_voice_data));
+            amp_data.out_mode = PLAYBACK_MODE_VOICE;
             amp_data.config = amp_config;
             break;
     }
 
     /* Set the selected config */
-    if ((ret = ioctl(rt5501_fd, RT5501_SET_CONFIG, &amp_data)) != 0) {
-        ALOGE("ioctl %d failed. ret = %d", RT5501_SET_CONFIG, ret);
+    if ((ret = ioctl(fd, AMP_SET_CONFIG, &amp_data)) != 0) {
+        ALOGE("ioctl %d failed. ret = %d", AMP_SET_CONFIG, ret);
     }
 
-    close(rt5501_fd);
+    close(fd);
 
     return ret;
 }
