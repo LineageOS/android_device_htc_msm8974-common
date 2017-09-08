@@ -18,6 +18,7 @@
 #pragma once
 
 #include <pthread.h>
+#include <stdatomic.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -107,7 +108,8 @@ struct tfa9887_amp_t {
     bool is_right;
     bool is_on;
     int mode;
-    bool initializing;
+    atomic_bool initializing;
+    bool clock_enabled;
     bool writing;
     pthread_t write_thread;
     pthread_mutex_t mutex;
@@ -222,6 +224,8 @@ struct tfa9887_amp_t {
 
 #define I2S_MIXER_CTL "QUAT_MI2S_RX Audio Mixer MultiMedia1"
 
+int tfa9887_clock_on(struct tfa9887_amp_t *amp);
+int tfa9887_clock_off(struct tfa9887_amp_t *amp);
 int tfa9887_open(void);
 int tfa9887_power(bool on);
 int tfa9887_set_mode(int mode);
