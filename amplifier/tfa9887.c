@@ -1391,6 +1391,42 @@ static int tfa9887_init(struct tfa9887_amp_t *amp, bool is_right)
 
 /* Public functions */
 
+int tfa9887_clock_on(struct tfa9887_amp_t *amp)
+{
+    if (amp->clock_enabled) {
+        ALOGW("%s: clocks already on\n", __func__);
+        return -EBUSY;
+    }
+
+    pthread_create(&amp->write_thread, NULL, write_dummy_data, amp);
+    pthread_mutex_lock(&amp->mutex);
+    while (!amp->writing) {
+        pthread_cond_wait(&amp->cond, &amp->mutex);
+    }
+    pthread_mutex_unlock(&amp->mutex);
+    amp->clock_enabled = true;
+
+    ALOGI("%s: clocks enabled\n", __func__);
+
+    return 0;
+}
+
+int tfa9887_clock_off(struct tfa9887_amp_t *amp)
+{
+    if (!amp->clock_enabled) {
+        ALOGW("%s: clocks already off\n", __func__);
+        return 0;
+    }
+
+    amp->initializing = false;
+    pthread_join(amp->write_thread, NULL);
+    amp->clock_enabled = false;
+
+    ALOGI("%s: clocks disabled\n", __func__);
+
+    return 0;
+}
+
 int tfa9887_open(void)
 {
     int rc, i;
@@ -1415,12 +1451,7 @@ int tfa9887_open(void)
             continue;
         }
         /* Open I2S interface while DSP ops are occurring */
-        pthread_create(&amp->write_thread, NULL, write_dummy_data, amp);
-        pthread_mutex_lock(&amp->mutex);
-        while (!amp->writing) {
-            pthread_cond_wait(&amp->cond, &amp->mutex);
-        }
-        pthread_mutex_unlock(&amp->mutex);
+        tfa9887_clock_on(amp);
 
         rc = tfa9887_hw_init(amp, TFA9887_DEFAULT_RATE);
         if (rc) {
@@ -1441,8 +1472,7 @@ int tfa9887_open(void)
 
 open_i2s_shutdown:
         /* Shut down I2S interface */
-        amp->initializing = false;
-        pthread_join(amp->write_thread, NULL);
+        tfa9887_clock_off(amp);
         /* Remember to power off, since we powered on in hw_init */
         tfa9887_hw_power(amp, false);
     }
