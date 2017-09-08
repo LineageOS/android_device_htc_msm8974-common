@@ -186,21 +186,6 @@ err_disable_i2s:
     return NULL;
 }
 
-static uint32_t get_mode(audio_mode_t mode)
-{
-    switch (mode) {
-        case AUDIO_MODE_RINGTONE:
-            return TFA9887_MODE_RING;
-        case AUDIO_MODE_IN_CALL:
-            return TFA9887_MODE_VOICE;
-        case AUDIO_MODE_IN_COMMUNICATION:
-            return TFA9887_MODE_VOIP;
-        case AUDIO_MODE_NORMAL:
-        default:
-            return TFA9887_MODE_PLAYBACK;
-    }
-}
-
 static int read_file(const char *file_name, uint8_t *buf, int sz, int seek)
 {
     int ret;
@@ -1234,7 +1219,7 @@ priv_init_err:
     return rc;
 }
 
-static int tfa9887_set_dsp_mode(struct tfa9887_amp_t *amp, uint32_t mode)
+static int tfa9887_set_dsp_mode(struct tfa9887_amp_t *amp, int mode)
 {
     int rc;
     const struct mode_config_t *config;
@@ -1449,10 +1434,9 @@ int tfa9887_power(bool on)
     return 0;
 }
 
-int tfa9887_set_mode(audio_mode_t mode)
+int tfa9887_set_mode(int mode)
 {
     int rc, i;
-    uint32_t dsp_mode;
     struct tfa9887_amp_t *amp = NULL;
 
     if (!amps) {
@@ -1460,13 +1444,11 @@ int tfa9887_set_mode(audio_mode_t mode)
         return -ENODEV;
     }
 
-    dsp_mode = get_mode(mode);
-
     for (i = 0; i < AMP_MAX; i++) {
         amp = &amps[i];
-        if (dsp_mode == amp->mode) {
+        if (mode == amp->mode) {
             ALOGV("%s: No mode change needed, already mode %d",
-                    __func__, dsp_mode);
+                    __func__, mode);
             continue;
         }
         rc = tfa9887_lock(amp, true);
@@ -1475,10 +1457,10 @@ int tfa9887_set_mode(audio_mode_t mode)
             continue;
         }
         rc = tfa9887_mute(amp, TFA9887_MUTE_DIGITAL);
-        rc = tfa9887_set_dsp_mode(amp, dsp_mode);
+        rc = tfa9887_set_dsp_mode(amp, mode);
         if (rc == 0) {
             /* Only count DSP mode switches that were successful */
-            amp->mode = dsp_mode;
+            amp->mode = mode;
         }
         rc = tfa9887_mute(amp, TFA9887_MUTE_OFF);
         rc = tfa9887_lock(amp, false);
