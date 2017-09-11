@@ -18,9 +18,10 @@
 #define LOG_TAG "rt5506"
 //#define LOG_NDEBUG 0
 
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <sys/ioctl.h>
-#include <fcntl.h>
 
 #include <system/audio.h>
 
@@ -81,18 +82,24 @@ int rt5506_set_mode(audio_mode_t mode) {
     struct rt5506_comm_data amp_data;
     struct rt5506_config amp_config;
     int headsetohm = HEADSET_OM_UNDER_DETECT;
-    int rt5506_fd;
-    int ret = -1;
+    int fd;
+    int rc = 0;
 
     /* Open the amplifier device */
-    if ((rt5506_fd = open(RT5506_DEVICE, O_RDWR)) < 0) {
-        ALOGE("error opening amplifier device %s", RT5506_DEVICE);
-        return -1;
+    if ((fd = open(RT5506_DEVICE, O_RDWR)) < 0) {
+        rc = -errno;
+        ALOGE("%s: error opening amplifier device %s: %d\n",
+                __func__, RT5506_DEVICE, rc);
+        goto set_mode_err;
     }
 
     /* Get impedance of headset */
-    if (ioctl(rt5506_fd, AMP_QUERY_OM, &headsetohm) < 0)
-        ALOGE("error querying headset impedance");
+    if ((rc = ioctl(fd, AMP_QUERY_OM, &headsetohm)) < 0) {
+        rc = -errno;
+        ALOGE("%s: error querying headset impedance: %d\n",
+                __func__, rc);
+        goto set_mode_err;
+    }
 
     switch(mode) {
         default:
@@ -128,11 +135,15 @@ int rt5506_set_mode(audio_mode_t mode) {
     }
 
     /* Set the selected config */
-    if ((ret = ioctl(rt5506_fd, AMP_SET_CONFIG, &amp_data)) != 0) {
-        ALOGE("ioctl %d failed. ret = %d", AMP_SET_CONFIG, ret);
+    if ((rc = ioctl(fd, AMP_SET_CONFIG, &amp_data)) != 0) {
+        rc = -errno;
+        ALOGE("%s: ioctl %d failed, ret = %d"\n",
+                __func__, AMP_SET_CONFIG, rc);
+        goto set_mode_err;
     }
 
-    close(rt5506_fd);
+set_mode_err:
+    close(fd);
 
-    return ret;
+    return rc;
 }

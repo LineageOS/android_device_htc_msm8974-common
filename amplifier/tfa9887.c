@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2013, The CyanogenMod Project
+ * Copyright (C) 2013-2015 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -265,7 +266,7 @@ static void data2bytes(const int32_t data[], int num_data, uint8_t bytes[])
 static int tfa9887_read_reg(struct tfa9887_amp_t *amp, uint8_t reg,
         uint16_t *val)
 {
-    int ret = 0;
+    int rc = 0;
     /* kernel uses unsigned int */
     unsigned int reg_val[2];
     uint8_t buf[2];
@@ -279,28 +280,30 @@ static int tfa9887_read_reg(struct tfa9887_amp_t *amp, uint8_t reg,
     /* unsure why the first byte is skipped */
     buf[0] = 0;
     buf[1] = reg;
-    if ((ret = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
-        ALOGE("ioctl %d failed, ret = %d", TPA9887_WRITE_CONFIG, ret);
+    if ((rc = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
+        ALOGE("%s: ioctl %d failed, rc = %d",
+                __func__, TPA9887_WRITE_CONFIG, -errno);
         goto read_reg_err;
     }
 
     reg_val[0] = 2;
     reg_val[1] = (unsigned int) &buf;
-    if ((ret = ioctl(amp->fd, TPA9887_READ_CONFIG, &reg_val)) != 0) {
-        ALOGE("ioctl %d failed, ret = %d", TPA9887_READ_CONFIG, ret);
+    if ((rc = ioctl(amp->fd, TPA9887_READ_CONFIG, &reg_val)) != 0) {
+        ALOGE("%s: ioctl %d failed, rc = %d",
+                __func__, TPA9887_READ_CONFIG, -errno);
         goto read_reg_err;
     }
 
     *val = ((buf[0] << 8) | buf[1]);
 
 read_reg_err:
-    return ret;
+    return rc;
 }
 
 static int tfa9887_write_reg(struct tfa9887_amp_t *amp, uint8_t reg,
         uint16_t val)
 {
-    int ret = 0;
+    int rc = 0;
     /* kernel uses unsigned int */
     unsigned int reg_val[2];
     uint8_t buf[4];
@@ -316,19 +319,20 @@ static int tfa9887_write_reg(struct tfa9887_amp_t *amp, uint8_t reg,
     buf[1] = reg;
     buf[2] = (0xFF00 & val) >> 8;
     buf[3] = (0x00FF & val);
-    if ((ret = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
-        ALOGE("ioctl %d failed, ret = %d", TPA9887_WRITE_CONFIG, ret);
+    if ((rc = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
+        ALOGE("%s: ioctl %d failed, rc = %d",
+                __func__, TPA9887_WRITE_CONFIG, -errno);
         goto write_reg_err;
     }
 
 write_reg_err:
-    return ret;
+    return rc;
 }
 
 static int tfa9887_read(struct tfa9887_amp_t *amp, int addr, uint8_t *buf,
         int len)
 {
-    int ret = 0;
+    int rc = 0;
     uint8_t reg_buf[2];
     /* kernel uses unsigned int */
     unsigned int reg_val[2];
@@ -343,27 +347,29 @@ static int tfa9887_read(struct tfa9887_amp_t *amp, int addr, uint8_t *buf,
     /* unsure why the first byte is skipped */
     reg_buf[0] = 0;
     reg_buf[1] = (0xFF & addr);
-    if ((ret = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
-        ALOGE("ioctl %d failed, ret = %d", TPA9887_WRITE_CONFIG, ret);
+    if ((rc = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
+        ALOGE("%s: ioctl %d failed, rc = %d",
+                __func__, TPA9887_WRITE_CONFIG, -errno);
         goto read_err;
     }
 
     reg_val[0] = len;
     reg_val[1] = (unsigned int) &kernel_buf;
-    if ((ret = ioctl(amp->fd, TPA9887_READ_CONFIG, &reg_val)) != 0) {
-        ALOGE("ioctl %d failed, ret = %d", TPA9887_READ_CONFIG, ret);
+    if ((rc = ioctl(amp->fd, TPA9887_READ_CONFIG, &reg_val)) != 0) {
+        ALOGE("%s: ioctl %d failed, rc = %d",
+                __func__, TPA9887_READ_CONFIG, -errno);
         goto read_err;
     }
     memcpy(buf, kernel_buf, len);
 
 read_err:
-    return ret;
+    return rc;
 }
 
 static int tfa9887_write(struct tfa9887_amp_t *amp, int addr,
         const uint8_t *buf, int len)
 {
-    int ret = 0;
+    int rc = 0;
     /* kernel uses unsigned int */
     unsigned int reg_val[2];
     uint8_t ioctl_buf[len + 2];
@@ -379,13 +385,14 @@ static int tfa9887_write(struct tfa9887_amp_t *amp, int addr,
     ioctl_buf[1] = (0xFF & addr);
     memcpy(ioctl_buf + 2, buf, len);
 
-    if ((ret = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
-        ALOGE("ioctl %d failed, ret = %d", TPA9887_WRITE_CONFIG, ret);
+    if ((rc = ioctl(amp->fd, TPA9887_WRITE_CONFIG, &reg_val)) != 0) {
+        ALOGE("%s: ioctl %d failed, rc = %d",
+                __func__, TPA9887_WRITE_CONFIG, -errno);
         goto write_err;
     }
 
 write_err:
-    return ret;
+    return rc;
 }
 
 static int tfa9887_read_mem(struct tfa9887_amp_t *amp, uint16_t start_offset,
