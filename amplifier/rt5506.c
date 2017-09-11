@@ -102,12 +102,13 @@ int rt5506_set_mode(audio_mode_t mode) {
                 ALOGI("Mode: Playback 128");
                 amp_config.reg_len = sizeof(rt5506_playback_128_data) / sizeof(struct rt5506_reg_data);
                 memcpy(&amp_config.reg, rt5506_playback_128_data, sizeof(rt5506_playback_128_data));
+                amp_data.out_mode = PLAYBACK_MODE_PLAYBACK128OH;
             } else {
                 ALOGI("Mode: Playback");
                 amp_config.reg_len = sizeof(rt5506_playback_data) / sizeof(struct rt5506_reg_data);
                 memcpy(&amp_config.reg, rt5506_playback_data, sizeof(rt5506_playback_data));
+                amp_data.out_mode = PLAYBACK_MODE_PLAYBACK;
             }
-            amp_data.out_mode = PLAYBACK_MODE_PLAYBACK;
             amp_data.config = amp_config;
             break;
         case AUDIO_MODE_RINGTONE:
