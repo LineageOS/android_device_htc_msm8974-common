@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "851f9dd8_8d70f2ea",
+        "filename": "amplifier/audio_amplifier.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2017-09-14T18:11:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be tfa_mode now?",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 50
+      },
+      "revId": "489d5d311e8fd4e409306a78ab256cfef1f87f9b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
