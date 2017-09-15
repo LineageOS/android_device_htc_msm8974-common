@@ -27,6 +27,9 @@ PLATFORM_PATH := device/htc/msm8974-common
 
 BOARD_VENDOR := htc
 
+# Includes
+TARGET_SPECIFIC_HEADER_PATH += $(PLATFORM_PATH)/include
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_NO_BOOTLOADER := true
