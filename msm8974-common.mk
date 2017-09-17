@@ -184,8 +184,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    lights.msm8974
+    android.hardware.light@2.0-service.htc_msm8974
 
 # Media config
 PRODUCT_COPY_FILES += \
