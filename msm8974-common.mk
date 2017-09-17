@@ -274,7 +274,7 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    android.hardware.usb@1.0-service.htc_msm8974
 
 # Vibrator
 PRODUCT_PACKAGES += \
