@@ -278,7 +278,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
+    android.hardware.vibrator@1.0-service.htc_msm8974
 
 # WiFi
 PRODUCT_PACKAGES += \
