@@ -31,3 +31,4 @@
 /sys/devices/qpnp-vadc-(.*)?/batt_therm                                              u:object_r:sysfs_thermal:s0
 /sys/devices/qpnp-vadc-(.*)?/emmc_therm                                              u:object_r:sysfs_thermal:s0
 /sys/devices/qpnp-vadc-(.*)?/quiet_therm                                             u:object_r:sysfs_thermal:s0
+/sys/devices/virtual/htc_sensorhub(/.*)?                                             u:object_r:sysfs_sensors:s0
