@@ -42,7 +42,7 @@ on early-init
     chown system system /sys/kernel/debug/kgsl/proc
 
 on init
-    export LD_SHIM_LIBS "/system/lib/liblog.so|libshim_log.so:/system/lib/hw/camera.vendor.msm8974.so|libshim_camera.so:/system/lib/libril.so|libshim_ril.so:/system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so"
+    export LD_SHIM_LIBS "/system/lib/liblog.so|libshim_log.so:/system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so:/system/vendor/lib/libril.so|libshim_ril.so:/system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -230,12 +230,12 @@ on boot
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 ## Service start here
-service adsprpcd /system/bin/adsprpcd
+service adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service hcheck /system/bin/hcheck
+service hcheck /vendor/bin/hcheck
     class late_start
     user system
     group system
@@ -249,23 +249,23 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     seclabel u:r:bluetooth_loader:s0
     oneshot
 
-service hvdcp /system/bin/hvdcp
+service hvdcp /vendor/bin/hvdcp
     class core
     user root
     group root
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
     disabled
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class core
     user root
     group root wifi wakelock radio inet
@@ -282,39 +282,39 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service ptt_socket_app /system/bin/ptt_socket_app
+service ptt_socket_app /vendor/bin/ptt_socket_app
     class main
     user system
     group system
     oneshot
 
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
 
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class core
     user radio
     group radio audio bluetooth gps qcom_diag
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
     class main
     user root
     group root
 
-service rmt_storage /system/bin/rmt_storage modem_st1 modem_st2 fsc recovery radio_config cdma_record
+service rmt_storage /vendor/bin/rmt_storage modem_st1 modem_st2 fsc recovery radio_config cdma_record
     class core
     user root
     group system wakelock
 
 # OSS thermal management
-service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+service thermanager /vendor/bin/thermanager /system/etc/thermanager.xml
     class late_start
     user system
     group system
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /vendor/bin/time_daemon
     class late_start
     user root
     group root
