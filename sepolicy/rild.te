@@ -1,0 +1,3 @@
+# Allow the deamon to access to /dev/radio and create qcrild.db
+allow rild qcril_device:dir rw_dir_perms;
+allow rild qcril_device:file create_file_perms;
