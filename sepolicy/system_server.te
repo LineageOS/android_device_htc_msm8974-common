@@ -1,0 +1,2 @@
+allow system_server qti_debugfs:file r_file_perms;
+qmux_socket(system_server);
