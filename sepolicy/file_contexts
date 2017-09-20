@@ -1,4 +1,5 @@
 # Binaries
+/system/vendor/bin/cir_fw_update                                                     u:object_r:cir_fw_update_exec:s0
 /system/vendor/blobs/(.*)/bin/netmgrd                                                u:object_r:netmgrd_exec:s0
 /system/vendor/blobs/(.*)/bin/qmuxd                                                  u:object_r:qmuxd_exec:s0
 
@@ -7,6 +8,7 @@
 /dev/rt5501                                                                          u:object_r:audio_device:s0
 /dev/tfa9887                                                                         u:object_r:audio_device:s0
 /dev/tfa9887l                                                                        u:object_r:audio_device:s0
+/dev/ttyHSL2                                                                         u:object_r:cir_device:s0
 
 # Device specific partitions
 /dev/block/platform/msm_sdcc\.1/by-name/cdma_record                                  u:object_r:radio_config_device:s0
