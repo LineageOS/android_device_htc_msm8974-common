@@ -1,3 +1,6 @@
+# debugfs
+type debugfs_ion, fs_type, debugfs_type;
+
 # procfs
 type proc_wcnss_service, fs_type;
 
