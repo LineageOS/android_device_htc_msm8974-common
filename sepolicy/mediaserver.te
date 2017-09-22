@@ -1,0 +1,9 @@
+allow mediaserver camera_socket:sock_file write;
+allow mediaserver debugfs_ion:file r_file_perms;
+allow mediaserver mm-qcamerad:unix_dgram_socket sendto;
+allow mediaserver vendor_file:file execmod;
+r_dir_file(mediaserver, sysfs_battery_supply)
+set_prop(mediaserver, camera_prop)
+
+binder_call(mediaserver, hal_configstore)
+allow mediaserver hal_configstore_ISurfaceFlingerConfigs:hwservice_manager find;
