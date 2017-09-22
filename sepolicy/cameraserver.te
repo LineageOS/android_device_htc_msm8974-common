@@ -1,0 +1,2 @@
+allow cameraserver debugfs_ion:file r_file_perms;
+allow cameraserver vendor_file:file execmod;
