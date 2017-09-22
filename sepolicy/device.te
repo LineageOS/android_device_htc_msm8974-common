@@ -1,4 +1,5 @@
 type cir_device, dev_type;
+type mm-qcamerad_device, dev_type;
 type qcril_device, dev_type;
 type radio_config_device, dev_type;
 type rfkill_device, dev_type;
