@@ -1,3 +1,5 @@
+htc.camera.                        u:object_r:camera_prop:s0
+
 ro.wcnss.serialno                  u:object_r:wcnss_prop:s0
 wlan.driver.ath                    u:object_r:wcnss_prop:s0
 wlan.driver.config                 u:object_r:wcnss_prop:s0
