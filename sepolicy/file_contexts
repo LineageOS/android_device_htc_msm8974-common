@@ -4,8 +4,15 @@
 /system/vendor/blobs/(.*)/bin/netmgrd                                                u:object_r:netmgrd_exec:s0
 /system/vendor/blobs/(.*)/bin/qmuxd                                                  u:object_r:qmuxd_exec:s0
 
+# Data files
+/data/cam_socket[0-9]                                                                u:object_r:camera_socket:s0
+
+# Debug
+/sys/kernel/debug/ion/heaps/system                                                   u:object_r:debugfs_ion:s0
+
 # Device nodes
 /dev/radio                                                                           u:object_r:qcril_device:s0
+/dev/rawchip(.*)                                                                     u:object_r:mm-qcamerad_device:s0
 /dev/rfkill                                                                          u:object_r:rfkill_device:s0
 /dev/rt5501                                                                          u:object_r:audio_device:s0
 /dev/tfa9887                                                                         u:object_r:audio_device:s0
@@ -24,6 +31,7 @@
 /system/vendor/bin/hw/android\.hardware\.usb@1\.0-service\.htc_msm8974               u:object_r:hal_usb_default_exec:s0
 
 # Sysfs nodes
+/sys/devices/f9925000\.i2c/i2c-1/1-[0-9a-f]+/leds/flashlight(/.*)?                   u:object_r:sysfs_flashlight:s0
 /sys/devices/leds-qpnp-(.*)?/leds(/.*)?                                              u:object_r:sysfs_leds:s0
 /sys/devices/mdp(.*)/qcom,mdss_fb_primary(.*)/leds(/.*)?                             u:object_r:sysfs_leds:s0
 /sys/devices/platform/htc_battery/power_supply/battery(/.*)?                         u:object_r:sysfs_battery_supply:s0
