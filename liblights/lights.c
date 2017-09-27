@@ -37,8 +37,11 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+
 static struct light_state_t g_notification;
+static struct light_state_t g_attention;
 static struct light_state_t g_battery;
+
 static int g_backlight = 255;
 
 char const*const AMBER_LED_FILE = "/sys/class/leds/amber/brightness";
@@ -201,14 +204,18 @@ static void set_speaker_light_locked_dual(UNUSED struct light_device_t *dev,
   }
 }
 
-
 static void handle_speaker_battery_locked(struct light_device_t *dev) {
   if (is_lit(&g_battery) && is_lit(&g_notification)) {
     set_speaker_light_locked_dual(dev, &g_battery, &g_notification);
+  } else if (is_lit(&g_notification)) {
+    set_speaker_light_locked(dev, &g_notification);
+  } else if (is_lit(&g_attention)) {
+    set_speaker_light_locked(dev, &g_attention);
   } else if (is_lit (&g_battery)) {
     set_speaker_light_locked(dev, &g_battery);
   } else {
-    set_speaker_light_locked(dev, &g_notification);
+    /* No lights or blink */
+    set_speaker_light_locked(dev, NULL);
   }
 }
 
@@ -241,8 +248,13 @@ static int set_light_battery(struct light_device_t* dev,
   return 0;
 }
 
-static int set_light_attention(UNUSED struct light_device_t* dev,
-                               UNUSED struct light_state_t const* state) {
+static int set_light_attention(struct light_device_t* dev,
+                               struct light_state_t const* state) {
+  pthread_mutex_lock(&g_lock);
+  g_attention = *state;
+  handle_speaker_battery_locked(dev);
+  pthread_mutex_unlock(&g_lock);
+
   return 0;
 }
 
