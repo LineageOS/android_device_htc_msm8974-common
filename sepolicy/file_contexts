@@ -21,7 +21,7 @@
 /data/persist/securemm(/.*)?                                                         u:object_r:data_qsee_file:s0
 
 /system/vendor/bin/cir_fw_update                                                     u:object_r:cir_fw_update_exec:s0
-/system/vendor/bin/init.qcom.bt.sh                                                   u:object_r:bluetooth_loader_exec:s0
+/system/vendor/bin/hci_qcomm_init                                                    u:object_r:bluetooth_loader_exec:s0
 /system/vendor/bin/thermanager                                                       u:object_r:thermanager_exec:s0
 
 /system/vendor/blobs/(.*)/bin/netmgrd                                                u:object_r:netmgrd_exec:s0
