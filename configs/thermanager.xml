@@ -29,7 +29,7 @@
 		</resource>
 
 		<!-- device-specific -->
-		<resource name="backlight" type="sysfs">/sys/devices/mdp.0/qcom,mdss_fb_primary.174/leds/lcd-backlight-nits/max_brightness</resource>
+		<resource name="backlight" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
 		<resource name="charger" type="sysfs">/sys/devices/platform/htc_battery/power_supply/battery/batt_temp_now</resource>
 		<resource name="charge_en" type="sysfs">/sys/class/power_supply/battery/charging_enabled</resource>
 		<resource name="dc" type="sysfs">/sys/devices/platform/htc_battery/power_supply/ac/current_max</resource>
