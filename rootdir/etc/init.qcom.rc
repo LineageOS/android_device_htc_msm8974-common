@@ -30,6 +30,12 @@ import init.qcom.usb.rc
 import init.target.rc
 
 on early-init
+    symlink /data/tombstones /tombstones
+
+    mkdir /firmware 0771 system system
+    mkdir /firmware/adsp 0771 system system
+    mkdir /firmware/radio 0771 system system
+
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
@@ -65,25 +71,13 @@ on init
     chmod 0664 /sys/class/htc_sensorhub/sensor_hub/gesture_motion
 
 on fs
-    mkdir /devlog 0700 root root
-    mkdir /fataldevlog 0700 root root
-    mkdir /ramdump 0700 root root
-    mkdir /carrier 0770 system carrier
-    mkdir /custdata 0771 system system
-
-    mkdir /firmware 0771 system system
-    mkdir /firmware/radio 0771 system system
-    mkdir /firmware/adsp 0771 system system
-    mkdir /vendor 0771 system system
-    mkdir /vendor/firmware 0771 system system
-
     mount_all /fstab.qcom
 
 on post-fs-data
     symlink /sys/kernel/debug /data/d
 
+    # Create directories for tombstones
     mkdir /data/tombstones 0771 system system
-    symlink /data/tombstones /tombstones
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
