@@ -61,6 +61,9 @@ TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
