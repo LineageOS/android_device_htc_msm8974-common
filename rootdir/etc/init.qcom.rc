@@ -287,7 +287,7 @@ service qcamerasvr /vendor/bin/mm-qcamera-daemon
 service qmuxd /vendor/bin/qmuxd
     class core
     user radio
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps oem_2950
 
 service qseecomd /vendor/bin/qseecomd
     class main
@@ -313,7 +313,7 @@ service time_daemon /vendor/bin/time_daemon
 service wcnss-service /vendor/bin/wcnss_service
     class late_start
     user system
-    group system wifi qcom_diag radio
+    group system wifi oem_2950 radio
     oneshot
 
 ## Properties start here
