@@ -111,6 +111,10 @@ TARGET_RIL_VARIANT := caf
 # SDClang
 TARGET_USE_SDCLANG := true
 
+# SELinux
+include device/qcom/sepolicy/legacy-sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
+
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
