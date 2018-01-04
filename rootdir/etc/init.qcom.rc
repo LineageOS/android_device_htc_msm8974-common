@@ -233,10 +233,6 @@ on boot
     # Load ADSP
     write /sys/kernel/boot_adsp/boot 1
 
-    # Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
-
     # Bluetooth MAC address
     chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddress
 
@@ -265,12 +261,6 @@ service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
-
-service mpdecision /vendor/bin/mpdecision --avg_comp
-    class main
-    user root
-    group root readproc
-    disabled
 
 service netmgrd /vendor/bin/netmgrd
     class core
