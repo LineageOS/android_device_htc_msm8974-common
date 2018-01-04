@@ -73,14 +73,18 @@ on enable-low-power
 
     write /dev/cpuctl/notify_on_migrate 1
 
-on boot
+on property:sys.boot_completed=1
     trigger enable-low-power
+
+    # Set perfd properties
+    rm /data/system/perfd/default_values
+    setprop ro.qualcomm.perf.cores_online 2
+
+    # Set I/O squeduler
+    setprop sys.io.scheduler "bfq"
+
+    # Start mpdecision
+    start mpdecision
 
 on property:init.svc.recovery=running
     trigger enable-low-power
-
-on property:dev.bootcomplete=1
-    rm /data/system/perfd/default_values
-    setprop ro.qualcomm.perf.cores_online 2
-    setprop sys.io.scheduler "bfq"
-    start mpdecision
