@@ -124,7 +124,7 @@ on property:dev.bootcomplete=1
     setprop ro.qualcomm.perf.cores_online 2
 
     # Start perfd
-    rm /data/system/perfd/default_values
+    rm /data/vendor/perfd/default_values
     start mpdecision
 
 service mpdecision /vendor/bin/mpdecision --avg_comp
