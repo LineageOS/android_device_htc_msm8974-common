@@ -24,9 +24,9 @@
 /system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.htc_msm8974             u:object_r:hal_light_default_exec:s0
 
 # Sysfs nodes
-/sys/devices/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk                            u:object_r:sysfs_thermal:s0
-/sys/devices/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk                        u:object_r:sysfs_thermal:s0
-/sys/devices/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/reset_count                       u:object_r:sysfs_thermal:s0
+/sys/devices/[a-f0-9]+\.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)?                            u:object_r:sysfs_kgsl:s0
+/sys/devices/[a-f0-9]+\.qcom,kgsl-3d0/devfreq/[a-f0-9]+.qcom,kgsl-3d0(/.*)?          u:object_r:sysfs_kgsl:s0
+/sys/devices/[a-f0-9]+\.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk                           u:object_r:sysfs_kgsl_gpuclk:s0
 /sys/devices/leds-qpnp-(.*)?/leds(/.*)?                                              u:object_r:sysfs_leds:s0
 /sys/devices/mdp(.*)/qcom,mdss_fb_primary(.*)/leds(/.*)?                             u:object_r:sysfs_leds:s0
 /sys/devices/platform/htc_battery/power_supply/battery(/.*)?                         u:object_r:sysfs_battery_supply:s0
