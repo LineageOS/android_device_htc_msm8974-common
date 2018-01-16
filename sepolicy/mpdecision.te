@@ -1,0 +1,3 @@
+allow mpdecision cgroup:file read;
+
+get_prop(mpdecision, freq_prop)
