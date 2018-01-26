@@ -171,20 +171,20 @@ PRODUCT_COPY_FILES += \
 
 # Input device config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/projector_input.idc:system/usr/idc/projector_input.idc \
-    $(LOCAL_PATH)/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
+    $(LOCAL_PATH)/idc/projector_input.idc:system/vendor/usr/idc/projector_input.idc \
+    $(LOCAL_PATH)/idc/synaptics-rmi-touchscreen.idc:system/vendor/usr/idc/synaptics-rmi-touchscreen.idc
 
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
 
-# Keylayouts and Keychars
+# Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/keypad_8974.kl:system/usr/keylayout/keypad_8974.kl \
-    $(LOCAL_PATH)/keylayout/projector-Keypad.kl:system/usr/keylayout/projector-Keypad.kl \
-    $(LOCAL_PATH)/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
-    $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/usr/keylayout/AK8789_HALL_SENSOR.kl
+    $(LOCAL_PATH)/keylayout/keypad_8974.kl:system/vendor/usr/keylayout/keypad_8974.kl \
+    $(LOCAL_PATH)/keylayout/projector-Keypad.kl:system/vendor/usr/keylayout/projector-Keypad.kl \
+    $(LOCAL_PATH)/keylayout/synaptics-rmi-touchscreen.kl:system/vendor/usr/keylayout/synaptics-rmi-touchscreen.kl \
+    $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/vendor/usr/keylayout/AK8789_HALL_SENSOR.kl
 
 # Keymaster
 PRODUCT_PACKAGES += \
