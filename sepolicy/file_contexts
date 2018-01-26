@@ -24,6 +24,7 @@
 
 # Sysfs nodes
 /sys/devices/leds-qpnp-(.*)?/leds(/.*)?                                              u:object_r:sysfs_leds:s0
+/sys/devices/mdp(.*)/caps                                                            u:object_r:sysfs_graphics:s0
 /sys/devices/mdp(.*)/qcom,mdss_fb_primary(.*)/leds(/.*)?                             u:object_r:sysfs_leds:s0
 /sys/devices/platform/htc_battery/power_supply/battery(/.*)?                         u:object_r:sysfs_battery_supply:s0
 /sys/devices/platform/htc_battery/power_supply/usb(/.*)?                             u:object_r:sysfs_usb_supply:s0
