@@ -121,9 +121,12 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
     libbt-vendor
 
-# Camera shim
+# Camera
 PRODUCT_PACKAGES += \
-    libshim_camera
+    android.hardware.camera.provider@2.4-impl \
+    camera.device@1.0-impl \
+    libshim_camera \
+    Snap
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -210,6 +213,11 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/vendor/etc/media_codecs_google_video.xml
 
 # NFC
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
+    com.android.nfc_extras \
+    Tag
+
 ifeq ($(TARGET_BUILD_VARIANT),user)
     NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access.xml
 else
@@ -217,10 +225,6 @@ else
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-PRODUCT_PACKAGES += \
-    Tag \
-    com.android.nfc_extras
 
 # OMX
 PRODUCT_PACKAGES += \
