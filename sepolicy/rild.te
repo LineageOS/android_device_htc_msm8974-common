@@ -1,4 +1,3 @@
 # Allow the daemon to access /dev/radio and create qcril.db there
 allow rild qcril_device:dir rw_dir_perms;
 allow rild qcril_device:file create_file_perms;
-allow rild radio_data_file:dir search;
