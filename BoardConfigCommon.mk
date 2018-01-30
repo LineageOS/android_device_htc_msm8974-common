@@ -120,6 +120,10 @@ DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# LineageHW
+BOARD_HARDWARE_CLASS += \
+    $(PLATFORM_PATH)/lineagehw
+
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 
