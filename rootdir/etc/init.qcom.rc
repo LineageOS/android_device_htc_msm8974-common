@@ -51,6 +51,7 @@ on init
 
 on fs
     mount_all /vendor/etc/fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
 
 on post-fs-data
     # Create directories for tombstones

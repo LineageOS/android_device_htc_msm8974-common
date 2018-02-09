@@ -15,5 +15,7 @@
 /dev/block/platform/msm_sdcc.1/by-name/radio        /firmware/radio  vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0                    wait
 /dev/block/platform/msm_sdcc.1/by-name/adsp         /firmware/adsp   vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0                    wait
 
+/dev/block/zram0                                    none             swap    defaults                                                                    zramsize=533413200,notrim
+
 /devices/msm_sdcc.2/mmc_host*                       auto             auto    defaults                                                                    voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/xhci-hcd/usb*                     auto             auto    defaults                                                                    voldmanaged=usb:auto
