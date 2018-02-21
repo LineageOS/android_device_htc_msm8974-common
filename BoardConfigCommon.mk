@@ -96,6 +96,9 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
+# Extended filesystem support
+TARGET_KERNEL_HAVE_EXFAT := true
+
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
