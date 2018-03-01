@@ -150,9 +150,6 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libril.so|libshim_ril.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so
 
-# USB
-TARGET_USES_LEGACY_ADB_INTERFACE := true
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
