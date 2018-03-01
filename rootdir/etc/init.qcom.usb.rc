@@ -31,25 +31,15 @@ on fs
 # USB manager fails to set a standard configuration
 on property:sys.usb.config=adb
     stop adbd
-    write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 0bb4
     write /sys/class/android_usb/android0/idProduct 0c81
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/class/android_usb/android0/enable 1
     start adbd
     write /sys/devices/platform/android_usb/usb_function_switch 2
     setprop sys.usb.state ${sys.usb.config}
 
 on property:persist.sys.usb.config=adb
     setprop sys.usb.config ${persist.sys.usb.config}
-
-on property:sys.usb.config=adboff
-    stop adbd
-    write /sys/class/android_usb/android0/f_adb/on 0
-    setprop sys.usb.state ${sys.usb.config}
-
-on property:service.adb.root=1
-    write /sys/class/android_usb/android0/restart_adbd 1
 
 # RNDIS
 on property:sys.usb.config=rndis
