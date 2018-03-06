@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4523ad3_7a7c05d8",
+        "filename": "sepolicy/mm-qcamerad.te",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-03-06T10:13:23Z",
+      "side": 1,
+      "message": "It\u0027s global, can be removed.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 66
+      },
+      "revId": "553d962633541bbffa877d829696af3f2b06625c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "381c3775_e5416dff",
+        "filename": "sepolicy/mm-qcamerad.te",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-03-06T10:13:23Z",
+      "side": 1,
+      "message": "Need to double check if this is the same we had back in N (https://github.com/LineageOS/android_device_htc_m8-common/blob/cm-14.1/sepolicy/mm-qcamerad.te#L1), which can be done as in here: https://github.com/LineageOS/android_device_qcom_sepolicy/blob/lineage-15.1/legacy-common/mm-qcamerad.te#L11-L13.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "553d962633541bbffa877d829696af3f2b06625c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
