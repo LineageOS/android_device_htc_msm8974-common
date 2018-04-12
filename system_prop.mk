@@ -63,6 +63,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.kill_heaviest_task=false \
     ro.lmk.log_stats=true \
     ro.lmk.upgrade_pressure=40 \
+    ro.lmk.use_minfree_levels=true \
     ro.lmk.use_psi=false
 
 # Media
