@@ -26,11 +26,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.sap=true \
     ro.qualcomm.bt.hci_transport=smd
 
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
-
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
