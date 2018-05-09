@@ -23,6 +23,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.ServiceManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.SubscriptionManager;
 
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
@@ -37,6 +38,8 @@ import org.codeaurora.internal.IExtTelephony;
 
 import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_ACTIVATED;
 import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_DEACTIVATED;
+
+import static android.telephony.SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
 import static com.android.internal.telephony.uicc.IccCardStatus.CardState.CARDSTATE_PRESENT;
 
@@ -69,6 +72,7 @@ public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
     private static Context sContext;
     private static ExtTelephonyServiceImpl sInstance;
     private static Phone[] sPhones;
+    private static SubscriptionManager sSubscriptionManager;
     private static int sUiccStatus[];
 
     private Handler mHandler;
@@ -79,6 +83,8 @@ public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
         sContext = context;
         sInstance = getInstance();
         sPhones = phones;
+        sSubscriptionManager = (SubscriptionManager) sContext.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
 
         // Assume everything present is provisioned by default
         sUiccStatus = new int[sPhones.length];
@@ -215,6 +221,28 @@ public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
 
         if (sUiccStatus[slotId] != PROVISIONED) {
             return INVALID_INPUT;
+        }
+
+        int subIdToDeactivate = sPhones[slotId].getSubId();
+        int subIdToMakeDefault = INVALID_SUBSCRIPTION_ID;
+
+        // Find first provisioned sub that isn't what we're deactivating
+        for (int i = 0; i < sPhones.length; i++) {
+            if (i == slotId) {
+                continue;
+            }
+            if (sUiccStatus[i] == PROVISIONED) {
+                subIdToMakeDefault = sPhones[i].getSubId();
+            }
+        }
+
+        // Make sure defaults are now sane
+        if (sSubscriptionManager.getDefaultSmsSubscriptionId() == subIdToDeactivate) {
+            sSubscriptionManager.setDefaultSmsSubId(subIdToMakeDefault);
+        }
+
+        if (sSubscriptionManager.getDefaultDataSubscriptionId() == subIdToDeactivate) {
+            sSubscriptionManager.setDefaultDataSubId(subIdToMakeDefault);
         }
 
         sPhones[slotId].setVoiceActivationState(SIM_ACTIVATION_STATE_DEACTIVATED);
