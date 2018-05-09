@@ -17,12 +17,28 @@
 package com.qualcomm.qti.internal.telephony;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncResult;
+import android.os.Handler;
+import android.os.Message;
 import android.os.ServiceManager;
 import android.telephony.PhoneNumberUtils;
+
+import com.android.internal.telephony.CommandsInterface;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.uicc.IccCardStatus.CardState;
+import com.android.internal.telephony.uicc.UiccCard;
+import com.android.internal.telephony.uicc.UiccController;
 
 import org.codeaurora.internal.IDepersoResCallback;
 import org.codeaurora.internal.IDsda;
 import org.codeaurora.internal.IExtTelephony;
+
+import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_ACTIVATED;
+import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_DEACTIVATED;
+
+import static com.android.internal.telephony.uicc.IccCardStatus.CardState.CARDSTATE_PRESENT;
 
 public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
 
@@ -46,12 +62,37 @@ public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
     private static final int INVALID_INPUT = -2;
     private static final int BUSY = -3;
 
+    // From IccCardProxy.java
+    private static final int EVENT_ICC_CHANGED = 3;
+
+    private static CommandsInterface[] sCommandsInterfaces;
     private static Context sContext;
     private static ExtTelephonyServiceImpl sInstance;
+    private static Phone[] sPhones;
+    private static int sUiccStatus[];
 
-    public static void init(Context context) {
+    private Handler mHandler;
+    private UiccController mUiccController;
+
+    public static void init(Context context, Phone[] phones,
+            CommandsInterface[] commandsInterfaces) {
+        sCommandsInterfaces = commandsInterfaces;
         sContext = context;
         sInstance = getInstance();
+        sPhones = phones;
+
+        // Assume everything present is provisioned by default
+        sUiccStatus = new int[sPhones.length];
+        for (int i = 0; i < sPhones.length; i++) {
+            if (sPhones[i] == null) {
+               sUiccStatus[i] = INVALID_STATE;
+            } else if (sPhones[i].getUiccCard() == null) {
+               sUiccStatus[i] = CARD_NOT_PRESENT;
+            } else {
+               sUiccStatus[i] = sPhones[i].getUiccCard().getCardState() == CARDSTATE_PRESENT
+                       ? PROVISIONED : CARD_NOT_PRESENT;
+            }
+        }
     }
 
     public static ExtTelephonyServiceImpl getInstance() {
@@ -66,11 +107,70 @@ public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
         if (ServiceManager.getService(EXT_TELEPHONY_SERVICE_NAME) == null) {
             ServiceManager.addService(EXT_TELEPHONY_SERVICE_NAME, this);
         }
+
+        // Keep track of ICC state
+        mHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                AsyncResult ar;
+
+                if (msg.what == EVENT_ICC_CHANGED) {
+                    ar = (AsyncResult) msg.obj;
+                    if (ar != null && ar.result != null) {
+                        iccStatusChanged((Integer) ar.result);
+                    }
+                }
+            }
+        };
+        mUiccController = UiccController.getInstance();
+        mUiccController.registerForIccChanged(mHandler, EVENT_ICC_CHANGED, null);
+    }
+
+    private void iccStatusChanged(int slotId) {
+        if (slotId >= sPhones.length || sPhones[slotId] == null) {
+            return;
+        }
+
+        UiccCard card = sPhones[slotId].getUiccCard();
+
+        if (card == null) {
+            sUiccStatus[slotId] = CARD_NOT_PRESENT;
+            return;
+        }
+
+        sUiccStatus[slotId] = card.getCardState() == CARDSTATE_PRESENT
+                ? PROVISIONED : CARD_NOT_PRESENT;
+        broadcastUiccActivation(slotId);
+    }
+
+    private void setUiccActivation(int slotId, boolean activate) {
+        UiccCard card = sPhones[slotId].getUiccCard();
+
+        int numApps = card.getNumApplications();
+
+        for (int i = 0; i < numApps; i++) {
+            if (card.getApplicationIndex(i) == null) {
+                continue;
+            }
+
+            sCommandsInterfaces[slotId].setUiccSubscription(i, activate, null);
+        }
+    }
+
+    private void broadcastUiccActivation(int slotId) {
+        Intent intent = new Intent(ACTION_UICC_MANUAL_PROVISION_STATUS_CHANGED);
+        intent.putExtra(PhoneConstants.PHONE_KEY, slotId);
+        intent.putExtra(EXTRA_NEW_PROVISION_STATE, getCurrentUiccCardProvisioningStatus(slotId));
+        sContext.sendBroadcast(intent);
     }
 
     @Override
     public int getCurrentUiccCardProvisioningStatus(int slotId) {
-        return PROVISIONED;
+        if (slotId >= sUiccStatus.length) {
+            return INVALID_INPUT;
+        }
+
+        return sUiccStatus[slotId];
     }
 
     @Override
@@ -80,12 +180,52 @@ public class ExtTelephonyServiceImpl extends IExtTelephony.Stub {
 
     @Override
     public int activateUiccCard(int slotId) {
+        if (slotId >= sPhones.length || sPhones[slotId] == null ||
+                slotId >= sCommandsInterfaces.length || sCommandsInterfaces[slotId] == null) {
+            return INVALID_INPUT;
+        }
+
+        if (sUiccStatus[slotId] == PROVISIONED) {
+            return SUCCESS;
+        }
+
+        if (sUiccStatus[slotId] != NOT_PROVISIONED) {
+            return INVALID_INPUT;
+        }
+
+        setUiccActivation(slotId, true);
+        sPhones[slotId].setVoiceActivationState(SIM_ACTIVATION_STATE_ACTIVATED);
+        sPhones[slotId].setDataActivationState(SIM_ACTIVATION_STATE_ACTIVATED);
+
+        sUiccStatus[slotId] = PROVISIONED;
+        broadcastUiccActivation(slotId);
+
         return SUCCESS;
     }
 
     @Override
     public int deactivateUiccCard(int slotId) {
-        return GENERIC_FAILURE;
+        if (slotId >= sPhones.length || sPhones[slotId] == null ||
+                slotId >= sCommandsInterfaces.length || sCommandsInterfaces[slotId] == null) {
+            return INVALID_INPUT;
+        }
+
+        if (sUiccStatus[slotId] == NOT_PROVISIONED) {
+            return SUCCESS;
+        }
+
+        if (sUiccStatus[slotId] != PROVISIONED) {
+            return INVALID_INPUT;
+        }
+
+        sPhones[slotId].setVoiceActivationState(SIM_ACTIVATION_STATE_DEACTIVATED);
+        sPhones[slotId].setDataActivationState(SIM_ACTIVATION_STATE_DEACTIVATED);
+        setUiccActivation(slotId, false);
+
+        sUiccStatus[slotId] = NOT_PROVISIONED;
+        broadcastUiccActivation(slotId);
+
+        return SUCCESS;
     }
 
     @Override
