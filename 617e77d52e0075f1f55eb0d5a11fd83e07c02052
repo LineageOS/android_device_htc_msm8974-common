@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93ac7bff_b620bfa9",
+        "filename": "ril/src/com/qualcomm/qti/internal/telephony/ExtTelephonyServiceImpl.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-05-10T11:40:04Z",
+      "side": 1,
+      "message": "Should have a break here",
+      "revId": "617e77d52e0075f1f55eb0d5a11fd83e07c02052",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
