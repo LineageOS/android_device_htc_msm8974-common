@@ -26,6 +26,8 @@ LOCAL_CFLAGS += \
      -fno-short-enums \
      -D_ANDROID_
 
+LOCAL_HEADER_LIBRARIES += libhardware_headers
+
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
     $(TARGET_OUT_HEADERS)/libflp
