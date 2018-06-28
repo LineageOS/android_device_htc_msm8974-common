@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013-2015 The CyanogenMod Project
- *               2017 The LineageOS Project
+ *               2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,12 @@
 
 #include <linux/rt5506.h>
 
-#include <cutils/log.h>
-
 #include <errno.h>
 #include <fcntl.h>
+#include <log/log.h>
 #include <stdio.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
 static struct rt55xx_config rt55xx_playback_config = {
     .reg_len = 10,
