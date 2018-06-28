@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013-2015 The CyanogenMod Project
- *               2017 The LineageOS Project
+ *               2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <log/log.h>
 #include <sys/ioctl.h>
-
-#include <cutils/log.h>
 
 #include <hardware/audio_amplifier.h>
 

@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013-2015 The CyanogenMod Project
- *               2017 The LineageOS Project
+ *               2017-2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@
 
 #include <linux/tfa9887.h>
 
-#include <cutils/log.h>
 #include <tinyalsa/asoundlib.h>
 
 #include <errno.h>
 #include <fcntl.h>
+#include <log/log.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
