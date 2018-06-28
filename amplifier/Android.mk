@@ -8,6 +8,8 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_CFLAGS += \
 	-DPLATFORM_MSM8974
 
+LOCAL_HEADER_LIBRARIES += libhardware_headers
+
 LOCAL_C_INCLUDES := \
 	external/tinyalsa/include \
 	hardware/libhardware/include \
