@@ -33,6 +33,8 @@ endif
 LOCAL_LDFLAGS += -Wl,--export-dynamic
 
 ## Includes
+LOCAL_HEADER_LIBRARIES += libhardware_headers
+
 LOCAL_C_INCLUDES:= \
     $(LOCAL_PATH)/platform_lib_abstractions
 
