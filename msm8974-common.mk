@@ -38,10 +38,10 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # FlipFlap
-PRODUCT_PACKAGES += FlipFlap
+#PRODUCT_PACKAGES += FlipFlap
 
 # Gesture Handler
-PRODUCT_PACKAGES += GestureHandler
+#PRODUCT_PACKAGES += GestureHandler
 
 # Ramdisk
 PRODUCT_PACKAGES += \
