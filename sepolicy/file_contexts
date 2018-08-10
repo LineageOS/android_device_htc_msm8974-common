@@ -5,7 +5,7 @@
 /system/vendor/blobs/(.*)/bin/qmuxd                                                  u:object_r:qmuxd_exec:s0
 
 # Data files
-/data/cam_socket[0-9]                                                                u:object_r:camera_socket:s0
+#/data/cam_socket[0-9]                                                                u:object_r:camera_socket:s0
 
 # Debug
 /sys/kernel/debug/ion/heaps/system                                                   u:object_r:debugfs_ion:s0
