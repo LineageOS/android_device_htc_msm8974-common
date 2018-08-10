@@ -1,4 +1,4 @@
-type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket3";
+#type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket3";
 
 allow mm-qcamerad sysfs_flashlight:dir search;
 allow mm-qcamerad sysfs_flashlight:file r_file_perms;

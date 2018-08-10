@@ -1,2 +1,2 @@
-allow bluetooth_loader sysfs_bluetooth_writable:file r_file_perms;
-get_prop(bluetooth_loader, wcnss_prop)
+#allow bluetooth_loader sysfs_bluetooth_writable:file r_file_perms;
+#get_prop(bluetooth_loader, wcnss_prop)
