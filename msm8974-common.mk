@@ -17,7 +17,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+
+# Dalvik heap overrides
+$(call inherit-product, vendor/lineage/config/dalvik/phone-xxhdpi-2048-dalvik-heap.mk)
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
