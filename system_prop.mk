@@ -6,7 +6,7 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
     audio_hal.period_size=192 \
-    av.offload.enable=false \
+    audio.offload.disable=true \
     tunnel.audio.encode=true \
     use.voice.path.for.pcm.voip=false
 
