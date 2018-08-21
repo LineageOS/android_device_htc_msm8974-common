@@ -5,18 +5,13 @@
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
-    audio_hal.period_size=192 \
     audio.offload.disable=true \
-    tunnel.audio.encode=true \
-    use.voice.path.for.pcm.voip=false
-
-# fluencetype can be "fluence" or "fluencepro" or "none"
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluence
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.speaker=false
+    persist.vendor.audio.fluence.voicecall=true \
+    persist.vendor.audio.fluence.speaker=false \
+    ro.vendor.audio.sdk.fluencetype=fluence \
+    vendor.audio_hal.period_size=192 \
+    vendor.audio.tunnel.encode=true \
+    vendor.voice.path.for.pcm.voip=false
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
