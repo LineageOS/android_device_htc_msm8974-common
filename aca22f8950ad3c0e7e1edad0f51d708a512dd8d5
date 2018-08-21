@@ -22,6 +22,30 @@
       "revId": "aca22f8950ad3c0e7e1edad0f51d708a512dd8d5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7231996_dbec4ea3",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-08-21T14:49:30Z",
+      "side": 1,
+      "message": "Maybe. I just set everything we currently have enabled by default (modded by Steve) in the 8974 audio HAL.",
+      "parentUuid": "b8664285_f3c1e0cb",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "aca22f8950ad3c0e7e1edad0f51d708a512dd8d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
