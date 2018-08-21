@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f093c63_a5f426cf",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-08-21T15:14:19Z",
+      "side": 1,
+      "message": "Deprecated as well: https://github.com/LineageOS/android_hardware_qcom_audio/commit/20a09088939e85871cfaf35131ddc0a1d1a21340",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "aefe27bda12adf11a51f5e1c58af33bdd7557671",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
