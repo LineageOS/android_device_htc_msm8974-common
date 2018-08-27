@@ -15,11 +15,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.bluetooth.soc=smd \
     ro.bluetooth.dun=true \
     ro.bluetooth.hfp.ver=1.6 \
     ro.bluetooth.sap=true \
-    ro.qualcomm.bt.hci_transport=smd
+    ro.qualcomm.bt.hci_transport=smd \
+    vendor.qcom.bluetooth.soc=smd
 
 # Dalvik heap
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -317,11 +317,11 @@ service wcnss-service /vendor/bin/wcnss_service
     oneshot
 
 ## Properties start here
-on property:bluetooth.hciattach=true
+on property:vendor.bluetooth.hciattach=true
     start hciattach
 
-on property:bluetooth.hciattach=false
-    setprop bluetooth.status off
+on property:vendor.bluetooth.hciattach=false
+    setprop vendor.bluetooth.status off
 
 on property:init.svc.bootanim=stopped
     # Overwrite ActivityManager's low memory killer settings
