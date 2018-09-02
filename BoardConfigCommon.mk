@@ -129,8 +129,7 @@ DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    $(PLATFORM_PATH)/lineagehw
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(PLATFORM_PATH)/lineagehw|**/*.java
 
 # Power
 TARGET_HAS_LEGACY_POWER_STATS := true
