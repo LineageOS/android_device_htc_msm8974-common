@@ -235,11 +235,12 @@ service adsprpcd /vendor/bin/adsprpcd
     user media
     group media
 
-service hciattach /vendor/bin/hci_qcomm_init -e
+service hciattach /vendor/bin/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
     disabled
+    seclabel u:r:bluetooth_loader:s0
     oneshot
 
 service hvdcp /vendor/bin/hvdcp
@@ -307,7 +308,6 @@ service wcnss-service /vendor/bin/wcnss_service
 ## Properties start here
 on property:bluetooth.hciattach=true
     start hciattach
-    setprop bluetooth.status on
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
