@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb090cad_576bf783",
+        "filename": "system_prop.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3917
+      },
+      "writtenOn": "2018-09-07T18:07:23Z",
+      "side": 1,
+      "message": "there\u0027s some discussion if to drop the whole line or to move it from smd-\u003epronto",
+      "revId": "4c193408f8e808fa6c5135bd7202b23f33932d8c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
