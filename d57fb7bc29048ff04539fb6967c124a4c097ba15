@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5856899c_18cd5835",
+        "filename": "system_prop.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-10-08T10:38:33Z",
+      "side": 1,
+      "message": "So, Arne, what would be the best option here? Simply remove this prop? I guess that leaving it unset would be the same as setting it to \"smd\".",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d57fb7bc29048ff04539fb6967c124a4c097ba15",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
