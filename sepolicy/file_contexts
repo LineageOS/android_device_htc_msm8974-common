@@ -35,8 +35,10 @@
 /sys/devices/leds-qpnp-(.*)?/leds(/.*)?                                              u:object_r:sysfs_leds:s0
 /sys/devices/mdp(.*)/qcom,mdss_fb_primary(.*)/leds(/.*)?                             u:object_r:sysfs_leds:s0
 /sys/devices/platform/htc_battery/power_supply/battery(/.*)?                         u:object_r:sysfs_battery_supply:s0
+/sys/devices/platform/htc_battery/power_supply/wireless(/.*)?                        u:object_r:sysfs_battery_supply:s0
 /sys/devices/platform/htc_battery/power_supply/usb(/.*)?                             u:object_r:sysfs_usb_supply:s0
 /sys/devices/platform/htc_battery/power_supply/ac(/.*)?                              u:object_r:sysfs_usb_supply:s0
+/sys/devices/qpnp-bms-(.*)?/power_supply/bms(/.*)?                                   u:object_r:sysfs_battery_supply:s0
 /sys/devices/qpnp-vadc-(.*)?/batt_therm                                              u:object_r:sysfs_thermal:s0
 /sys/devices/qpnp-vadc-(.*)?/emmc_therm                                              u:object_r:sysfs_thermal:s0
 /sys/devices/qpnp-vadc-(.*)?/quiet_therm                                             u:object_r:sysfs_thermal:s0
