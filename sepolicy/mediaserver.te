@@ -1,6 +1,8 @@
-allow mediaserver sysfs_camera_awb_cal:file r_file_perms;
+allow mediaserver sysfs_camera_sensor:file r_file_perms;
 allow mediaserver vendor_file:file execmod;
 r_dir_file(mediaserver, sysfs_battery_supply)
+r_dir_file(mediaserver, sysfs_camera_awb_cal)
+r_dir_file(mediaserver, sysfs_camera_led_status)
 set_prop(mediaserver, camera_prop)
 unix_socket_send(mediaserver, camera, mm-qcamerad)
 

@@ -1,9 +1,7 @@
 type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket3";
 
-allow mm-qcamerad sysfs_flashlight:dir search;
-allow mm-qcamerad sysfs_flashlight:file r_file_perms;
-allow mm-qcamerad sysfs_leds:dir search;
-allow mm-qcamerad sysfs_leds:lnk_file r_file_perms;
 allow mm-qcamerad system_data_file:dir w_dir_perms;
 allow mm-qcamerad mm-qcamerad_device:chr_file rw_file_perms;
-allow mm-qcamerad sysfs:file r_file_perms;
+r_dir_file(mm-qcamerad, sysfs_camera_awb_cal)
+r_dir_file(mm-qcamerad, sysfs_flashlight)
+r_dir_file(mm-qcamerad, sysfs_leds)

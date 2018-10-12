@@ -6,4 +6,6 @@ type proc_wcnss_service, fs_type;
 
 # sysfs
 type sysfs_camera_awb_cal, fs_type, sysfs_type;
+type sysfs_camera_led_status, fs_type, sysfs_type;
+type sysfs_camera_sensor, fs_type, sysfs_type;
 type sysfs_flashlight, fs_type, sysfs_type;
