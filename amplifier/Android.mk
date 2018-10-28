@@ -8,14 +8,12 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_CFLAGS += \
 	-DPLATFORM_MSM8974
 
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 
 LOCAL_C_INCLUDES := \
 	external/tinyalsa/include \
 	$(call project-path-for,qcom-audio)/hal
-
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_SRC_FILES := \
 	rt5506.c \
