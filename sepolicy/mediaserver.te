@@ -1,3 +1,4 @@
+allow mediaserver device:dir r_dir_perms;
 allow mediaserver sysfs_camera_sensor:file r_file_perms;
 allow mediaserver vendor_file:file execmod;
 r_dir_file(mediaserver, sysfs_battery_supply)
