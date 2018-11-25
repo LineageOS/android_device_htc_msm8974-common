@@ -31,7 +31,7 @@
 
 # Sysfs nodes
 /sys/android_camera_awb_cal(/.*)?                                                    u:object_r:sysfs_camera_awb_cal:s0
-/sys/android_camera[0-9]+/sensor                                                     u:object_r:sysfs_camera_sensor:s0
+/sys/android_camera([0-9]+)?/sensor                                                  u:object_r:sysfs_camera_sensor:s0
 /sys/camera_led_status(/.*)?                                                         u:object_r:sysfs_camera_led_status:s0
 /sys/devices/f9925000\.i2c/i2c-1/1-[0-9a-f]+/leds/flashlight(/.*)?                   u:object_r:sysfs_flashlight:s0
 /sys/devices/leds-qpnp-(.*)?/leds(/.*)?                                              u:object_r:sysfs_leds:s0
