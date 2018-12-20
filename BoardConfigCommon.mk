@@ -102,6 +102,9 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
+# Encryption
+TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
+
 # Extended filesystem support
 TARGET_EXFAT_DRIVER := sdfat
 
