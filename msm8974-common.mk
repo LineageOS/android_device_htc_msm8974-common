@@ -274,6 +274,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermanager.xml:system/vendor/etc/thermanager.xml
 
+# Touch
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.htc_msm8974
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
