@@ -1,0 +1,4 @@
+service vendor.touch-hal-1-0-htc_msm8974 /vendor/bin/hw/vendor.lineage.touch@1.0-service.htc_msm8974
+    class hal
+    user system
+    group system
