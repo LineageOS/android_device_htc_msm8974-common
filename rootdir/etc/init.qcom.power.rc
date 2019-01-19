@@ -116,7 +116,7 @@ on boot
 on property:init.svc.recovery=running
     trigger enable-low-power
 
-on property:dev.bootcomplete=1
+on property:sys.bootcomplete=1
     # Set I/O scheduler
     setprop sys.io.scheduler "bfq"
 
