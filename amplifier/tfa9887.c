@@ -182,7 +182,6 @@ void * write_dummy_data(void *param)
         }
     } while (amp->initializing);
 
-err_free:
     free(buffer);
 err_close_pcm:
     pcm_close(pcm);
