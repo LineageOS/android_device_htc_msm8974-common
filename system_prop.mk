@@ -54,6 +54,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.ccodec=0 \
     media.aac_51_output_enabled=true \
     mm.enable.smoothstreaming=true
 
