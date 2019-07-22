@@ -35,6 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.hwui.use_buffer_age=false \
     debug.mdpcomp.logs=0 \
+    debug.sf.enable_gl_backpressure=1 \
     debug.sf.hw=1 \
     dev.pm.dyn_samplingrate=1 \
     persist.hwc.mdpcomp.enable=true \
