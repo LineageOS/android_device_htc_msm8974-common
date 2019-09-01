@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- *               2017 The LineageOS Project
+ *               2017,2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,9 @@ package org.lineageos.settings.device;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
 import android.view.MenuItem;
+
+import androidx.preference.PreferenceFragment;
 
 public class TouchscreenGestureSettingsFragment extends PreferenceFragment {
 
