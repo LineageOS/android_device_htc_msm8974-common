@@ -77,7 +77,7 @@ AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO := true
-USE_CUSTOM_AUDIO_POLICY := 1
+USE_CUSTOM_AUDIO_POLICY := 0
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
@@ -141,8 +141,9 @@ TARGET_USES_INTERACTION_BOOST := true
 TARGET_USE_SDCLANG := true
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+#include device/qcom/sepolicy-legacy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/tmp
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
