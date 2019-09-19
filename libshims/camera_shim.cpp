@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
+ *               2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,4 +28,13 @@ extern "C" void _ZN7android13GraphicBufferC1Ejjij(
   std::string requestorName = "<Unknown>";
   _ZN7android13GraphicBufferC1EjjijNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE(
       inWidth, inHeight, inFormat, inUsage, requestorName);
+}
+
+// GraphicBuffer::lock(uint32_t inUsage, void** vaddr, int32_t* outBytesPerPixel = nullptr,
+//                     int32_t* outBytesPerStride = nullptr);
+extern "C" void _ZN7android13GraphicBuffer4lockEjPPvPiS3_(uint32_t inUsage, void** vaddr,
+    int32_t* outBytesPerPixel, int32_t* outBytesPerStride);
+
+extern "C" void _ZN7android13GraphicBuffer4lockEjPPv(uint32_t inUsage, void** vaddr) {
+    _ZN7android13GraphicBuffer4lockEjPPvPiS3_(inUsage, vaddr, nullptr, nullptr);
 }
