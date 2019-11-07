@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1c65a1c_d47909e1",
+        "filename": "configs/ld.config.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-11-07T15:52:33Z",
+      "side": 0,
+      "message": "This config was \"more special\" because of this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "be72a7f32195ae8a41da2f222d08731ffad40fb7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
