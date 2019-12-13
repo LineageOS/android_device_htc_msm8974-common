@@ -28,6 +28,8 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/packages/apps/Snap/res/values
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
