@@ -127,6 +127,9 @@ DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# LMKD stats logging
+TARGET_LMKD_STATS_LOG := true
+
 # Power
 TARGET_USES_INTERACTION_BOOST := true
 
