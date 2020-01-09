@@ -6,6 +6,8 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
     audio.offload.disable=true \
+    debug.stagefright.omx_default_rank.sw-audio=1 \
+    debug.stagefright.omx_default_rank=0 \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.speaker=false \
     ro.vendor.audio.sdk.fluencetype=fluence \
