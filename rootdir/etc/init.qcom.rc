@@ -286,12 +286,6 @@ service rmt_storage /vendor/bin/rmt_storage modem_st1 modem_st2 fsc recovery rad
     user root
     group system wakelock
 
-# OSS thermal management
-service thermanager /vendor/bin/thermanager /vendor/etc/thermanager.xml
-    class late_start
-    user system
-    group system
-
 service time_daemon /vendor/bin/time_daemon
     class late_start
     user root
