@@ -23,6 +23,8 @@
 # definition file).
 #
 
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
+
 PLATFORM_PATH := device/htc/msm8974-common
 
 BOARD_VENDOR := htc
