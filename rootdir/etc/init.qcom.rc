@@ -45,6 +45,8 @@ on init
 on fs
     mount_all /vendor/etc/fstab.qcom
 
+    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
+
 on post-fs-data
     # Create directories for tombstones
     mkdir /data/tombstones 0771 system system
