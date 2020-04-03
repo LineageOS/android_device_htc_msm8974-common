@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ae10e71_71428864",
+        "filename": "recovery/root/init.recovery.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-04-03T13:31:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t if be on \"on fs\"?",
+      "revId": "b2872513ed602fcf22bcdad2f5c30cbcb0e5f1f9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
