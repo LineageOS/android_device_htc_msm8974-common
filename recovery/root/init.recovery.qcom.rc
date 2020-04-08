@@ -58,22 +58,22 @@ on property:recovery.perf.mode=1
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "performance"
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "performance"
 
-service chargeled /sbin/chargeled
+service chargeled /system/bin/chargeled
     disabled
     seclabel u:r:healthd:s0
 
-service choice_fn /sbin/choice_fn
+service choice_fn /system/bin/choice_fn
     disabled
     seclabel u:r:recovery:s0
 
-service detect_key /sbin/detect_key
+service detect_key /system/bin/detect_key
     disabled
     seclabel u:r:recovery:s0
 
-service offmode_charging /sbin/offmode_charging
+service offmode_charging /system/bin/offmode_charging
     disabled
     seclabel u:r:healthd:s0
 
-service power_test /sbin/power_test
+service power_test /system/bin/power_test
     disabled
     seclabel u:r:recovery:s0
