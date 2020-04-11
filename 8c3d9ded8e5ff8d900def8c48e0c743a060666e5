@@ -22,6 +22,30 @@
       "revId": "8c3d9ded8e5ff8d900def8c48e0c743a060666e5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25dce606_30dc548c",
+        "filename": "recovery/root/init.recovery.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-04-11T20:48:05Z",
+      "side": 1,
+      "message": "https://github.com/LineageOS/android_device_htc_msm8974-common/blob/lineage-17.1/chargeled/Android.mk#L30",
+      "parentUuid": "3ec4a4eb_ade887bb",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "8c3d9ded8e5ff8d900def8c48e0c743a060666e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
