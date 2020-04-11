@@ -137,6 +137,10 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     Snap
 
+# ChargeLED
+PRODUCT_PACKAGES += \
+    chargeled
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
