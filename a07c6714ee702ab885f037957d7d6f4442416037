@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0b9c6d2_c2b38035",
+        "filename": "recovery/root/init.recovery.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-04-12T11:04:30Z",
+      "side": 0,
+      "message": "This shouldn\u0027t be removed.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 65
+      },
+      "revId": "a07c6714ee702ab885f037957d7d6f4442416037",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
