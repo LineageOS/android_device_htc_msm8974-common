@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2014 The CyanogenMod Project
+#               2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +22,7 @@ LOCAL_SRC_FILES := chargeled.cpp
 
 LOCAL_CFLAGS += -Wall
 
-LOCAL_STATIC_LIBRARIES := libc liblog libcutils
+LOCAL_STATIC_LIBRARIES := libbase libc liblog libcutils
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
 LOCAL_MODULE := chargeled
