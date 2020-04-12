@@ -1,4 +1,5 @@
 # Binaries
+/system/bin/chargeled                                                                u:object_r:healthd_exec:s0
 /system/vendor/bin/cir_fw_update                                                     u:object_r:cir_fw_update_exec:s0
 /system/vendor/bin/thermanager                                                       u:object_r:thermanager_exec:s0
 /system/vendor/blobs/(.*)/bin/netmgrd                                                u:object_r:netmgrd_exec:s0
