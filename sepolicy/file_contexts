@@ -4,6 +4,9 @@
 /system/vendor/blobs/(.*)/bin/netmgrd                                                u:object_r:netmgrd_exec:s0
 /system/vendor/blobs/(.*)/bin/qmuxd                                                  u:object_r:qmuxd_exec:s0
 
+# Binaries (recovery only)
+/system/bin/chargeled                                                                u:object_r:healthd_exec:s0
+
 # Data files
 /data/cam_socket[0-9]                                                                u:object_r:camera_socket:s0
 
