@@ -25,6 +25,7 @@ cc_binary {
     cflags: ["-Wall"],
 
     static_libs: [
+        "libbase",
         "libc",
         "liblog",
         "libcutils",
