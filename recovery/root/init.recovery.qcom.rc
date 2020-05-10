@@ -32,3 +32,6 @@ service offmode_charging /system/bin/offmode_charging
 service power_test /system/bin/power_test
     disabled
     seclabel u:r:recovery:s0
+
+on property:ro.bootmode=offmode_charging
+    stop recovery
