@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The CyanogenMod Project
+ *               2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +24,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/time.h>
+#include <batteryservice/BatteryServiceConstants.h>
 #include <cutils/klog.h>
 #include <cutils/uevent.h>
 #include <sys/epoll.h>
@@ -41,15 +43,6 @@
 #define UEVENT_BUF_SIZE 64*1024
 #define UEVENT_MSG_LEN 1024
 static int uevent_fd;
-
-/* Matches frameworks/native/include/batteryservice/BatteryService.h */
-enum {
-    BATTERY_STATUS_UNKNOWN = 1,
-    BATTERY_STATUS_CHARGING = 2,
-    BATTERY_STATUS_DISCHARGING = 3,
-    BATTERY_STATUS_NOT_CHARGING = 4,
-    BATTERY_STATUS_FULL = 5,
-};
 
 struct sysfs_string_enum_map {
     char* str;

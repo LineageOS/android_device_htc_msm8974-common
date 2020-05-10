@@ -18,6 +18,7 @@ cc_binary {
     recovery: true,
     srcs: ["chargeled.cpp"],
     cflags: ["-Wall"],
+    header_libs: ["libbatteryservice_headers"],
     static_executable: true,
     static_libs: [
         "libbase",
