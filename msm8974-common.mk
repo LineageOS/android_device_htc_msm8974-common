@@ -154,8 +154,8 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service \
+    android.hardware.gnss@1.0-impl.htc_msm8974 \
+    android.hardware.gnss@1.0-service.htc_msm8974 \
     gps.msm8974
 
 PRODUCT_COPY_FILES += \
