@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2014 SlimRoms Project
  *               2016 The CyanogenMod Project
- *               2017 The LineageOS Project
+ *               2017,2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
 import android.os.UserHandle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
@@ -240,7 +241,8 @@ public class HtcGestureService extends Service {
             final boolean enabled = LineageSettings.System.getInt(mContext.getContentResolver(),
                     LineageSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
             if (enabled) {
-                mVibrator.vibrate(100);
+                mVibrator.vibrate(VibrationEffect.createOneShot(100,
+                        VibrationEffect.DEFAULT_AMPLITUDE));
             }
         }
     }
