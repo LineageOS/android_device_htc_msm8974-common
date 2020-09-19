@@ -24,3 +24,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := ril_shim.cpp
 LOCAL_MODULE := libshim_ril
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := qcril_shim.cpp
+LOCAL_SHARED_LIBRARIES := libaudioclient
+LOCAL_MODULE := libshim_qcril
+include $(BUILD_SHARED_LIBRARY)
