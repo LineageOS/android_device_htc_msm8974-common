@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ *               2017,2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,4 +18,12 @@
 extern "C" int
 vsnprintf() {
   return 0;
+}
+
+extern "C" void *
+_ZN7android11AudioSystem16addErrorCallbackEPFviE(void *cb);
+
+extern "C" void
+_ZN7android11AudioSystem16setErrorCallbackEPFviE(void *cb) {
+  _ZN7android11AudioSystem16addErrorCallbackEPFviE(cb);
 }
