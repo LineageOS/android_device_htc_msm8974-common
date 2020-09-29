@@ -139,11 +139,14 @@ TARGET_USES_INTERACTION_BOOST := true
 TARGET_USE_SDCLANG := true
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+#include device/qcom/sepolicy-legacy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/temp
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
+    /system/lib/liblog.so|liblog_htc.so \
     /system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_qcril.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so
