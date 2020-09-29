@@ -136,6 +136,7 @@ TARGET_USES_INTERACTION_BOOST := true
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
