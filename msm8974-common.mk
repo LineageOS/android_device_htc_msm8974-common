@@ -178,6 +178,10 @@ PRODUCT_PACKAGES += \
     liboverlay \
     memtrack.msm8974
 
+# Healthd
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service
+
 # HIDL
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
