@@ -18,4 +18,8 @@ cc_library_shared {
 
     name: "liblog_htc",
 
+    shared_libs: [
+        "liblog",
+        "libcutils"
+    ],
 }
