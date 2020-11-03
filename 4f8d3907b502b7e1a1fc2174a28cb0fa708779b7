@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae31df8b_9052ad7e",
+        "filename": "libshims/qcril_shim.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2020-11-03T02:36:41Z",
+      "side": 1,
+      "message": "Luk tells me the namespace is not needed as extern C takes advantage.",
+      "revId": "4f8d3907b502b7e1a1fc2174a28cb0fa708779b7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
