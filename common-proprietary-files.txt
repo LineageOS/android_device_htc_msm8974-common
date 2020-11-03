@@ -1,0 +1,52 @@
+# Common proprietary files - from HTC package 5.07.1700.15 (GPe) version, unless pinned
+
+# aptX - from griffin - NCLS25.86-11-4-6-5
+vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+
+# GPS - from bacon - LA.BF.1.1.3_rb1.13 tag
+lib/libloc_api_v02.so:vendor/lib/libloc_api_v02.so|9a8401afc86b54e73aa29995f228fd0243cee793
+lib/libloc_ds_api.so:vendor/lib/libloc_ds_api.so|99a6f29860dbe0ed6fe3cbfdbb2277a63850f2c0
+vendor/lib/hw/flp.default.so|c36ec0a3e6563fa8ddb96aaa7d0129249ce1d305
+vendor/lib/libflp.so|20994b3ac3ecd2094698ac98463aed97e3ce54ef
+vendor/lib/libgeofence.so|953c2720c98825cdfb2757839f5f86400c11a2d5
+vendor/lib/libizat_core.so|8d1b8f5c26cc9bcdacb402e253048211a6c07ba1
+vendor/lib/liblbs_core.so|3dea19e84a0d226ea3e5c92ec169f7e0fdbe5699
+
+# Graphics - from onyx - LA.BF.1.1.3_rb1.12 tag
+vendor/lib/egl/eglsubAndroid.so|b8a5790c5b4ba4cf0018c94066104610c821ed8e
+vendor/lib/egl/libEGL_adreno.so|cd29673e990dba8158e961e287a79dfbd852d095
+vendor/lib/egl/libGLESv1_CM_adreno.so|ae86d16ba499ac6cdd3cecb91ae6b16b4c303984
+vendor/lib/egl/libGLESv2_adreno.so|445be60045ff86d1d27545692134eacf0d89a6dc
+vendor/lib/egl/libq3dtools_adreno.so|2c12919492f1146b58f4f1c379dfe10d3320d476
+vendor/lib/libC2D2.so|d34587d5143bd09f847cb6686b03461a6e62cd87
+vendor/lib/libCB.so|3d2ad5bbff1cf4019d89c38689ec2ce3c186a3c1
+vendor/lib/libOpenCL.so|2b4b9692b16729b880d7881e68208183943f9612
+vendor/lib/libadreno_utils.so|a109e06c933811c578d129c0772a612cf5d94367
+vendor/lib/libbccQTI.so|94132d5d8421428001c2201a8915949c531b0ad9
+vendor/lib/libc2d30-a3xx.so|3666e0bf418e7ea7480b27c2c1ddd1bc86037044
+vendor/lib/libgsl.so|fafee1adf0e89325b3a1ea83d5205c02ebf860f3
+vendor/lib/libllvm-qcom.so|fc96c949b662fb34b287a4c0aa194984fbb57d7d
+vendor/lib/libsc-a3xx.so|231201bcfead5f930537d2fba22d89b00e673386
+vendor/lib/libscale.so|b44f44c633fa404d10e76aaa23593b516e08e2b8
+
+# Graphics firmware
+etc/firmware/a330_pfp.fw:vendor/firmware/a330_pfp.fw
+etc/firmware/a330_pm4.fw:vendor/firmware/a330_pm4.fw
+
+# Perf - from bacon
+bin/mpdecision:vendor/bin/mpdecision|97ffb19a25cdb0ccf2e13e776fc7e8770fbf3901
+vendor/lib/libqti-perfd-client.so
+
+# RenderScript - from bullhead - OPR4.170623.006 factory image
+vendor/lib/libRSDriver_adreno.so|2044baf0169177e52aba6d7138f80559ecf2b58d
+vendor/lib/librs_adreno.so|cceaf847d749ac2f1a3af3a1ae6ba653d93e0ed9
+vendor/lib/librs_adreno_sha1.so|e797997d3ac69dfa87904863672c5b9769c796cc
+
+# Time services
+-app/TimeService/TimeService.apk:vendor/app/TimeService/TimeService.apk
+bin/time_daemon:vendor/bin/time_daemon
+vendor/lib/libtime_genoff.so
+vendor/lib/libTimeService.so
+
+# Widevine - from angler - OPR6.170623.017 factory image
+vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
