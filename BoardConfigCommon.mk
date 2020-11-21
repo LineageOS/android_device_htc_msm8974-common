@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2015-2016 The CyanogenMod Project
-#               2017-2019 The LineageOS Project
+#               2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,8 +22,6 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
-
-BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 PLATFORM_PATH := device/htc/msm8974-common
 
