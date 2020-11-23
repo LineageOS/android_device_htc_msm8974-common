@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6e40a84_8b8f3125",
+        "filename": "msm8974-common.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-11-23T21:09:23Z",
+      "side": 0,
+      "message": "This is not dead. It\u0027s just not yet enabled in the manifest.",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 20
+      },
+      "revId": "43a1091da4dc445592e86c193452db29b3588998",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
