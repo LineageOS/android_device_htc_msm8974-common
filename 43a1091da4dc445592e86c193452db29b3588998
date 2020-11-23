@@ -22,6 +22,30 @@
       "revId": "43a1091da4dc445592e86c193452db29b3588998",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd55b8a7_fa717c1a",
+        "filename": "msm8974-common.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2020-11-23T21:44:15Z",
+      "side": 0,
+      "message": "done",
+      "parentUuid": "a6e40a84_8b8f3125",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 20
+      },
+      "revId": "43a1091da4dc445592e86c193452db29b3588998",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
