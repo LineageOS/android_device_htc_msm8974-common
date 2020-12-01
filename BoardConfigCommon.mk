@@ -175,5 +175,9 @@ TARGET_RECOVERY_DEVICE_DIRS += $(PLATFORM_PATH)
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
+# VNDK
+# Dedupe VNDK libraries with identical core variants.
+TARGET_VNDK_USE_CORE_VARIANT := true
+
 # Inherit from the proprietary version
 -include vendor/htc/msm8974-common/BoardConfigVendor.mk
