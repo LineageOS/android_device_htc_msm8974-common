@@ -138,6 +138,9 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so
 
+# SVELTE config
+MALLOC_SVELTE := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
