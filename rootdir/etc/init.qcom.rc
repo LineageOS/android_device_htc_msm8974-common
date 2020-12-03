@@ -289,6 +289,10 @@ service wcnss-service /vendor/bin/wcnss_service
     oneshot
 
 ## Properties start here
+on property:sys.boot_completed=1
+    # Enable ZRAM once boot is completed
+    swapon_all /vendor/etc/fstab.qcom
+
 on property:vendor.bluetooth.hciattach=true
     start hciattach
 
