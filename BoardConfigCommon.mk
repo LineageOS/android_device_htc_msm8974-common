@@ -133,6 +133,9 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libril_vzw-qc-qmi-1.so|libshim_ril.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so
 
+# SVELTE config
+MALLOC_SVELTE := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
