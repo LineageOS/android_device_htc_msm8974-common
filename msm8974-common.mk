@@ -43,9 +43,6 @@ PRODUCT_PACKAGES += FlipFlap
 # Gesture Handler
 PRODUCT_PACKAGES += GestureHandler
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/permissions/privapp-permissions-gesturehandler.xml:system/etc/permissions/privapp-permissions-gesturehandler.xml
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
