@@ -1,2 +1,10 @@
 genfscon proc /calibration u:object_r:proc_wcnss_service:s0
 genfscon proc /last_kmsg u:object_r:proc_last_kmsg:s0
+
+genfscon sysfs /android_camera_awb_cal u:object_r:sysfs_camera_awb_cal:s0
+genfscon sysfs /camera_led_status u:object_r:sysfs_camera_led_status:s0
+genfscon sysfs /devices/platform/htc_battery/power_supply/ac u:object_r:sysfs_usb_supply:s0
+genfscon sysfs /devices/platform/htc_battery/power_supply/battery u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/htc_battery/power_supply/usb u:object_r:sysfs_usb_supply:s0
+genfscon sysfs /devices/platform/htc_battery/power_supply/wireless u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/virtual/htc_sensorhub u:object_r:sysfs_sensors:s0
