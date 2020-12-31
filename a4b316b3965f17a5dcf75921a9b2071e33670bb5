@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "831a26e9_8ef2e3e9",
+        "filename": "extract-files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2020-12-31T17:53:24Z",
+      "side": 1,
+      "message": "align with common template.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "a4b316b3965f17a5dcf75921a9b2071e33670bb5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
