@@ -17,10 +17,6 @@
 
 set -e
 
-# Override anything that may come from the calling environment
-BOARD=msm8974
-DEVICE_COMMON=${BOARD}-common
-
 INITIAL_COPYRIGHT_YEAR=2014
 
 # Load extract_utils and do some sanity checks
@@ -36,12 +32,51 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
+# Store device common variable for later usage
+DEVICE_COMMON_ORIGINAL="${DEVICE_COMMON}"
+DEVICE_COMMON="${BOARD_COMMON}"
+
 # Initialize the helper
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true
+setup_vendor "${BOARD_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true
 
 # Copyright headers and common guards
-write_headers "${BOARD}" "TARGET_BOARD_PLATFORM"
+write_headers "${DEVICE_SPECIFIED_COMMON_DEVICE}"
 
+# The standard common blobs
 write_makefiles "${MY_DIR}/common-proprietary-files.txt"
 
+# Finish
 write_footers
+
+# Restore device common variable to original one
+DEVICE_COMMON="${DEVICE_COMMON_ORIGINAL}"
+
+if [ -s "${MY_DIR}/../$DEVICE_COMMON/common-proprietary-files.txt" ]; then
+    # Reinitialize the helper for device common
+    setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true
+
+    # Copyright headers and guards
+    write_headers "${DEVICE_SPECIFIED_COMMON_DEVICE}"
+
+    # The standard device common blobs
+    write_makefiles "${MY_DIR}/../${DEVICE_COMMON}/common-proprietary-files.txt"
+
+    # Finish
+    write_footers
+fi
+
+if [ -s "${MY_DIR}/../${DEVICE}/device-proprietary-files.txt" ]; then
+    # Reinitialize the helper for device
+    INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
+    setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false
+
+    # Copyright headers and guards
+    write_headers
+
+    # The standard device blobs
+    write_makefiles "${MY_DIR}/../${DEVICE_COMMON}/proprietary-files.txt"
+    write_makefiles "${MY_DIR}/../${DEVICE}/device-proprietary-files.txt"
+
+    # Finish
+    write_footers
+fi
