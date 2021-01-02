@@ -17,10 +17,6 @@
 
 set -e
 
-# Override anything that may come from the calling environment
-BOARD=msm8974
-DEVICE_COMMON=${BOARD}-common
-
 INITIAL_COPYRIGHT_YEAR=2014
 
 # Load extract_utils and do some sanity checks
@@ -66,8 +62,25 @@ if [ -z "$SRC" ]; then
 fi
 
 # Initialize the helper
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true "${CLEAN_VENDOR}"
+setup_vendor "${BOARD_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/common-proprietary-files.txt" "${SRC}" "${SECTION}"
+
+if [ -s "${MY_DIR}/../${DEVICE_COMMON}/common-proprietary-files.txt" ];then
+    # Reinitialize the helper for device common
+    source "${MY_DIR}/../${DEVICE_COMMON}/extract-files.sh"
+    setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
+
+    extract "${MY_DIR}/../${DEVICE_COMMON}/common-proprietary-files.txt" "${SRC}" "${SECTION}"
+fi
+
+if [ -s "${MY_DIR}/../${DEVICE}/device-proprietary-files.txt" ]; then
+    # Reinitialize the helper for device
+    source "${MY_DIR}/../${DEVICE}/extract-files.sh"
+    setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
+
+    extract "${MY_DIR}/../${DEVICE_COMMON}/proprietary-files.txt" "${SRC}" "${SECTION}"
+    extract "${MY_DIR}/../${DEVICE}/device-proprietary-files.txt" "${SRC}" "${SECTION}"
+fi
 
 "$MY_DIR"/setup-makefiles.sh
