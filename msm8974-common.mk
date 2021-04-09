@@ -22,7 +22,7 @@ PRODUCT_SOONG_NAMESPACES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/htc/msm8974-common/msm8974-common-vendor.mk)
+$(call inherit-product, vendor/htc/msm8974-common/msm8974-common-vendor.mk)
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
