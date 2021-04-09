@@ -171,4 +171,4 @@ TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
 # Inherit from the proprietary version
--include vendor/htc/msm8974-common/BoardConfigVendor.mk
+include vendor/htc/msm8974-common/BoardConfigVendor.mk
