@@ -180,4 +180,4 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 TARGET_VNDK_USE_CORE_VARIANT := true
 
 # Inherit from the proprietary version
--include vendor/htc/msm8974-common/BoardConfigVendor.mk
+include vendor/htc/msm8974-common/BoardConfigVendor.mk
