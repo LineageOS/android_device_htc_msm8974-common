@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <cutils/log.h>
+#include <log/log.h>
 
 int wcnss_init_qmi(void)
 {
