@@ -32,6 +32,7 @@
 # HALs
 /system/vendor/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software           u:object_r:hal_gatekeeper_default_exec:s0
 /system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.htc_msm8974             u:object_r:hal_light_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.power\.stats@1\.0-service\.mock             u:object_r:hal_power_stats_default_exec:s0
 /system/vendor/bin/hw/vendor\.lineage\.touch@1\.0-service\.htc_msm8974               u:object_r:hal_lineage_touch_default_exec:s0
 
 # Rootfs files
