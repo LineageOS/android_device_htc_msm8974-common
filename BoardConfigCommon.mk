@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2015-2016 The CyanogenMod Project
-#               2017-2020 The LineageOS Project
+#               2017-2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -131,6 +131,8 @@ BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 TARGET_LD_SHIM_LIBS := \
     /system/lib/liblog.so|liblog_htc.so \
     /system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so \
+    /system/vendor/lib/libril_spr-qc-qmi-1.so|libshim_ril.so \
+    /system/vendor/lib/libril_vzw-qc-qmi-1.so|libshim_ril.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so
 
 # Wifi
