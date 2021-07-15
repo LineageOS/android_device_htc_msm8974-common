@@ -1,6 +1,9 @@
 # debugfs
 type debugfs_ion, fs_type, debugfs_type;
 
+# drm
+type mediadrm_vendor_data_file, file_type, data_file_type;
+
 # procfs
 type proc_last_kmsg, fs_type, proc_type;
 type proc_wcnss_service, fs_type;
