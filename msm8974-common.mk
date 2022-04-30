@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/htc/msm8974-common/msm8974-common-vendor.mk)
 
 # System properties
--include $(LOCAL_PATH)/system_prop.mk
+include $(LOCAL_PATH)/system_prop.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
