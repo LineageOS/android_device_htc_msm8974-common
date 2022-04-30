@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7e710b_e2b5a80e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-04-30T07:07:31Z",
+      "side": 1,
+      "message": "Confirmed by decompiling $OUT generated APKs - these were not taking effect, which meant I couldn\u0027t connect to my home wifi lol (wpa2/wpa3 sae)",
+      "revId": "8a5cdd9c4302a5d4f85b75bb88bf1b949d6fb91f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
