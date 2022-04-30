@@ -229,7 +229,6 @@ void Light::setSpeakerLightLockedDual(const LightState& batteryState,
                                       const LightState& notificationState __unused) {
     uint32_t colorRGB = batteryState.color & 0x00ffffff;
     uint32_t color = LED_BLANK;
-    uint32_t blinkMode = BLINK_MODE_LONG;
 
     if ((colorRGB >> 8) & 0xff) color = LED_GREEN;
     if ((colorRGB >> 16) & 0xff) color = LED_AMBER;
