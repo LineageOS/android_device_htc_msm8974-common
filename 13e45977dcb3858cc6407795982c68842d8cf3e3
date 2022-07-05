@@ -16,6 +16,24 @@
       "message": "Did you read my comment? These overlays aren\u0027t actually taking effect unless we move them to RRO - I decompiled the app\u0027s to check, and proof is in that before this WPA3 didn\u0027t work, now the fallback does.",
       "revId": "13e45977dcb3858cc6407795982c68842d8cf3e3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89be3ac4_83a79f58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-07-05T11:18:01Z",
+      "side": 1,
+      "message": "The overlays are not actually taking effect because these have been moved to android_packages_modules_Wifi/service/ServiceWifiResources/res/values/config.xml. Make sure to update the overlay as I don\u0027t see the need to convert to RRO overlay package on these old devices.",
+      "parentUuid": "49e4b0eb_d074c196",
+      "revId": "13e45977dcb3858cc6407795982c68842d8cf3e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
