@@ -34,6 +34,24 @@
       "parentUuid": "49e4b0eb_d074c196",
       "revId": "13e45977dcb3858cc6407795982c68842d8cf3e3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee604e1e_90ebbaff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-07-05T16:30:38Z",
+      "side": 1,
+      "message": "Actually, I think you\u0027re confused here - that repo is 19.1 only?",
+      "parentUuid": "89be3ac4_83a79f58",
+      "revId": "13e45977dcb3858cc6407795982c68842d8cf3e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
