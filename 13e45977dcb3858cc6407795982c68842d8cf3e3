@@ -70,6 +70,24 @@
       "parentUuid": "ee604e1e_90ebbaff",
       "revId": "13e45977dcb3858cc6407795982c68842d8cf3e3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b688703c_7951fc78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-07-05T16:35:07Z",
+      "side": 1,
+      "message": "Try to debug the overlays. See https://source.android.com/devices/architecture/rros#debugging-overlays.",
+      "parentUuid": "20cdf0a7_61856fb8",
+      "revId": "13e45977dcb3858cc6407795982c68842d8cf3e3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
