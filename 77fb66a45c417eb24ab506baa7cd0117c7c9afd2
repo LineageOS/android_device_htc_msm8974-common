@@ -16,6 +16,23 @@
       "message": "frameworks/opt/net/wifi/service/res/val\nues/config.xml - yeah they still exist here on 18.1 which is what we were overlaying before this RRO - so something is funky",
       "revId": "77fb66a45c417eb24ab506baa7cd0117c7c9afd2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "505c6089_e6193395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-07-11T19:25:21Z",
+      "side": 1,
+      "message": "disabling RRO instead",
+      "revId": "77fb66a45c417eb24ab506baa7cd0117c7c9afd2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
