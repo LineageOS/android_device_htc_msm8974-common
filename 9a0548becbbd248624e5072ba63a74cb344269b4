@@ -33,6 +33,23 @@
       "message": "\u003e Patch Set 4:\n\u003e \n\u003e \u003e Patch Set 4:\n\u003e  \u003e \n\u003e  \u003e (1 comment)\n\u003e \n\u003e Bruno has said that he doesn\u0027t want to do ROs for this old device though, which I totally understand, so the alternative is just disabling them.\n\nIt\u0027s not that I don\u0027t want. I only wanted to avoid doing so if it wasn\u0027t strictly necessary.",
       "revId": "9a0548becbbd248624e5072ba63a74cb344269b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0a1901_e5cc6abd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22176
+      },
+      "writtenOn": "2022-07-12T14:52:10Z",
+      "side": 1,
+      "message": "i use it in msm8974 ks01lte and klte(all models) but no any break for Wifi overlay",
+      "revId": "9a0548becbbd248624e5072ba63a74cb344269b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
