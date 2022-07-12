@@ -68,6 +68,24 @@
       "parentUuid": "eb0a1901_e5cc6abd",
       "revId": "9a0548becbbd248624e5072ba63a74cb344269b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e003313_4677a311",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22176
+      },
+      "writtenOn": "2022-07-12T14:59:25Z",
+      "side": 1,
+      "message": "https://github.com/Khalvat-M/device_samsung_msm8974-common/blob/12.1/common.mk#L23",
+      "parentUuid": "db39e66b_46d2e62c",
+      "revId": "9a0548becbbd248624e5072ba63a74cb344269b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
