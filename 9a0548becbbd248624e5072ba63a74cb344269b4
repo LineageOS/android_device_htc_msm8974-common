@@ -86,6 +86,24 @@
       "parentUuid": "db39e66b_46d2e62c",
       "revId": "9a0548becbbd248624e5072ba63a74cb344269b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea8a7ec_21c86da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-07-12T15:13:47Z",
+      "side": 1,
+      "message": "This is Android 12 - and mot remotely comparable?\n\nPLUS - this is a BCM device - which I\u0027m not fully convinced SAE doesn\u0027t work on after Linux4\u0027s changes.\n\nEither way, this is a different case.",
+      "parentUuid": "5e003313_4677a311",
+      "revId": "9a0548becbbd248624e5072ba63a74cb344269b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
